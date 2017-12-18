@@ -135,9 +135,11 @@ export class HttpX extends Http {
     }
 
     public startLoad(title = 'Loading...') {
-        this.loading.title = title;
-        this.loading.show = true;
-        this.loading.fade = true;
+        setTimeout(() => {
+            this.loading.title = title;
+            this.loading.show = true;
+            this.loading.fade = true;
+        });
     }
 
     public endLoad() {

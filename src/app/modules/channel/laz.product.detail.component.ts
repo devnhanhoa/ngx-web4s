@@ -40,7 +40,7 @@ export class LazProductDetailComponent implements OnInit {
     }
 
     public back = () => {
-        this.channelService.http.loading.show = true;
+        // this.channelService.http.loading.show = true;
         this.router.navigate([`/channel/laz-products`]);
     }
 }

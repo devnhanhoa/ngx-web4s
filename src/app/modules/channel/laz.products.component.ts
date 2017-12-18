@@ -93,7 +93,7 @@ export class LazProductsComponent implements OnInit {
     }
 
     public goDetail = product => {
-        this.channelService.http.loading.show = true;
+        // this.channelService.http.loading.show = true;
         this.router.navigate([`/channel/laz-product/${product.id}`]);
     }
 }

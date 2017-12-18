@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
                 this.loading = false;
             },
             error => {
-                this.productsService.http.endLoad();
+                this.loading = false;
             }
         );
     }
