@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {AppService} from '../service/app.service';
-import {rootUrl} from '../app.config';
 
 @Component({
     selector: 'app-layouts-sidebar',
@@ -10,7 +9,6 @@ import {rootUrl} from '../app.config';
 
 export class SidebarComponent {
     private subs: any;
-    public rootUrl = rootUrl;
     public menuRoot = [];
     public allMenu = [];
     public select = {Module: {id: ''}};
@@ -34,10 +32,6 @@ export class SidebarComponent {
     }
 
     public selectItem(item) {
-        if (this.select.Module.id !== item.Module.id) {
-            this.select = item;
-        } else {
-            this.select = {Module: {id: ''}};
-        }
+        this.select = item;
     }
 }

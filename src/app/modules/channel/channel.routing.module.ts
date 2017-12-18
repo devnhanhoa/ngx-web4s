@@ -9,9 +9,9 @@ import {LazOrderDetailComponent} from './laz.order.detail.component';
 const routes: Routes = [
     {path: '', component: LazProductsComponent},
     {path: 'laz-products', component: LazProductsComponent},
-    {path: 'laz-product/:id', component: LazProductDetailComponent},
+    {path: 'laz-products/:id', component: LazProductDetailComponent},
     {path: 'laz-orders', component: LazOrdersComponent},
-    {path: 'laz-order/:id', component: LazOrderDetailComponent}
+    {path: 'laz-orders/:id', component: LazOrderDetailComponent}
 ];
 
 @NgModule({

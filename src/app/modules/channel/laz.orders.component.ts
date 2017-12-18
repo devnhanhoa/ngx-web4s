@@ -94,6 +94,6 @@ export class LazOrdersComponent implements OnInit {
 
     public goDetail = product => {
         this.channelService.http.loading.show = true;
-        this.router.navigate([`/channel/laz-order/${product.id}`]);
+        this.router.navigate([`/channel/laz-orders/${product.id}`]);
     }
 }
