@@ -1,0 +1,45 @@
+.sidebar {
+    width: 190px;
+    float: left;
+    position: static;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav-list > li {
+    display: block;
+    position: relative;
+    float: none;
+    padding: 0;
+    border-style: solid;
+    border-width: 1px 0 0;
+}
+
+.nav-list > li > a > .menu-icon {
+    display: inline-block;
+    min-width: 22px;
+    margin-right: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    vertical-align: top;
+}
+
+.nav-list > li:last-child {
+    border-bottom-width: 1px;
+}
+
+.sidebar .sidebar-toggle:before {
+    display: block;
+    height: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 13px;
+}
+
+.nav-list li.active > a:after, .nav-list > li:before, .nav-list > li > .submenu:before, .nav-list > li > .submenu > li:before, .sidebar .sidebar-toggle:before, .sidebar.menu-min .nav-list > li > .submenu:after, .sidebar:before, li.divider:before {
+    content: "";
+}

@@ -1,0 +1,11 @@
+<b *ngIf="((submenu.length>0)&&(parent!=='0'))" class="arrow fa glyphicon glyphicon-plus"
+   (mouseover)="showChildren(true)"></b>
+<ul *ngIf="submenu.length" [style.display]="show ? 'block' : 'none'"
+    [ngClass]="(show&&parent!=='0')? 'subsubmenu': ''"
+    class="submenu">
+    <li *ngFor="let menu of submenu" (mouseleave)="showChildren(parent==='0'||false)">
+        <a href="{{menu.Module.slug}}"> {{menu.Module.alias}} </a>
+        <app-layouts-sidebar-submenu [allmenu]="arrallmenu" [parent]="menu.Module.id"
+                                     [group]="menu.Module.group"></app-layouts-sidebar-submenu>
+    </li>
+</ul>

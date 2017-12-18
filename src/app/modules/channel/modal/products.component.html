@@ -1,0 +1,119 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div appSubLoading [open]="loading" class="modal-body">
+    <div class="row">
+        <form novalidate (ngSubmit)="search()" #form="ngForm">
+            <div class="col-sm-6">
+                <div class="form-group form-input-lg">
+                    <input title=""
+                           [(ngModel)]="productsService.search.title"
+                           placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
+                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
+                           class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-input-lg">
+                    <a id="btn-search" class="btn btn-primary btn-md" (click)="search()"><i
+                            class="ace-icon fa fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Thuộc tính</th>
+                    <th style="width: 35px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let product of products">
+                    <ng-container *ngFor="let row of product.ProductItem; let i = index">
+                        <tr *ngIf="i===0; else next">
+                            <td [attr.rowspan]="product.ProductItem.length">{{product.id}}-{{product.name}}</td>
+                            <td>
+                                <b>Mã:</b> {{row.code}}
+                                <br>
+                                <span [innerHTML]="row.meta"></span>
+                            </td>
+                            <td class="text-center"><i *ngIf="selproductsid.indexOf(row.id) < 0; else idisable"
+                                                       class="fa fa-arrow-circle-right product-action"
+                                                       (click)="addProduct(row)"
+                                                       aria-hidden="true"></i>
+                                <ng-template #idisable>
+                                    <i class="fa fa-check-circle" style="color: #337ab7" aria-hidden="true"></i>
+                                </ng-template>
+                            </td>
+                        </tr>
+                        <ng-template #next>
+                            <tr>
+                                <td>
+                                    <b>Mã:</b> {{row.code}}
+                                    <br>
+                                    <span [innerHTML]="row.meta"></span>
+                                </td>
+                                <td class="text-center"><i *ngIf="selproductsid.indexOf(row.id) < 0; else idisable"
+                                                           class="fa fa-arrow-circle-right product-action"
+                                                           (click)="addProduct(row)"
+                                                           aria-hidden="true"></i>
+                                    <ng-template #idisable>
+                                        <i class="fa fa-check-circle" style="color: #337ab7" aria-hidden="true"></i>
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="productsService.search.page"
+                                [maxSize]="maxSize"
+                                [itemsPerPage]="productsService.search.page_size"
+                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                (pageChanged)="pageChanged($event)"
+                                class="pagination-sm pull-right"
+                                [boundaryLinks]="true"></pagination>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Sản phẩm đã chọn</th>
+                    <th style="width: 35px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let row of selproducts">
+                    <tr>
+                        <td>
+                            <b>Mã:</b> {{row.code}}
+                            <br>
+                            <span [innerHTML]="row.meta"></span>
+                        </td>
+                        <td class="text-center"><i class="fa fa-window-close product-action"
+                                                   (click)="removeProduct(row)"
+                                                   aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="sync()">Đồng bộ</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Quay lại</button>
+</div>

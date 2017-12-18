@@ -1,0 +1,19 @@
+<div id="sidebar" class="sidebar-fixed sidebar responsive sidebar-scroll display">
+    <div class="nav-wrap-up pos-rel">
+        <ul class="nav nav-list group-left">
+            <li *ngFor="let menu of menuRoot" class="sidebar-left"
+                [ngClass]="(menu.Module.id === select.Module.id)? 'open': ''" (click)="selectItem(menu)">
+                <a href="javascript: void(0)" class="dropdown-toggle">
+                    <i class="{{menu.Module.class_i}}"></i>
+                    <span class="menu-text"> {{menu.Module.alias}} </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <app-layouts-sidebar-submenu [allmenu]="allMenu" [show]="(select.Module.id===menu.Module.id)"
+                                             [group]="menu.Module.group"></app-layouts-sidebar-submenu>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-toggle sidebar-collapse" style="z-index: 1;">
+        <i class="ace-icon miniature-menu fa fa-angle-double-left "></i>
+    </div>
+</div>

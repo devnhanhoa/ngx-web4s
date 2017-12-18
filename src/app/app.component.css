@@ -1,0 +1,18 @@
+.main-container {
+    padding-top: 40px;
+    height: 100%;
+}
+
+.modal-sm {
+    width: max-content;
+    min-width: 60px;
+}
+
+.modal-dialog {
+    margin: 10% auto;
+}
+
+.alert {
+    margin-bottom: 0;
+    border-top: none;
+}

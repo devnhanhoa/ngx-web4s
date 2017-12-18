@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <app-public-breadcrumb></app-public-breadcrumb>
+            <div class="panel panel-default page-header">
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#main">Thông tin chính</a></li>
+                        <li><a data-toggle="tab" href="#item">Các phiên bản</a></li>
+                        <li><a data-toggle="tab" href="#seo">SEO</a></li>
+                        <li><a data-toggle="tab" href="#other">Thông tin khác</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="main" class="tab-pane fade in active">
+                            <form *ngIf="lazproduct" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Tên sản phẩm:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.ProductContent.name}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Đường dẫn:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Menu.url}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Trạng thái:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.status}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Danh mục:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.categories}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Loại sản phẩm:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.type_product}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Thương hiệu:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.manufac_id}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Xuất xứ:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.countryId}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Loại bảo hành:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.warranty_type}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Thời gian bảo hành:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.warranty}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Thông tin nổi bật:</label>
+                                    <div class="col-sm-10">
+                                        <div [innerHTML]="lazproduct.arr_data.ProductContent.description"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Mô tả sản phẩm:</label>
+                                    <div class="col-sm-10">
+                                        <div [innerHTML]="lazproduct.arr_data.ProductContent.content"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Tags:</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">{{lazproduct.arr_data.ProductContent.tag}}</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="item" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Some content in menu 1.</p>
+                        </div>
+                        <div id="seo" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Some content in menu 2.</p>
+                        </div>
+                        <div id="other" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Some content in menu 2.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                    <button type="button" class="btn btn-default" (click)="back()">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
