@@ -3,7 +3,8 @@
         <ul class="nav nav-list group-left">
             <li *ngFor="let menu of menuRoot" class="sidebar-left"
                 [ngClass]="(menu.Module.id === select.Module.id)? 'open': ''" (click)="selectItem(menu)">
-                <a href="javascript: void(0)" class="dropdown-toggle">
+                <a href="javascript: void(0)"
+                   class="dropdown-toggle">
                     <i class="{{menu.Module.class_i}}"></i>
                     <span class="menu-text"> {{menu.Module.alias}} </span>
                     <b class="arrow fa fa-angle-down"></b>

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 @Component({
     selector: 'app-layouts-sidebar-submenu',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 
 export class SubmenuComponent implements OnInit {
+    public root = environment.root;
     @Input('allmenu')
     public allmenu: any;
 

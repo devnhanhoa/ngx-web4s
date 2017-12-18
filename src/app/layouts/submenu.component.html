@@ -4,7 +4,13 @@
     [ngClass]="(show&&parent!=='0')? 'subsubmenu': ''"
     class="submenu">
     <li *ngFor="let menu of submenu" (mouseleave)="showChildren(parent==='0'||false)">
-        <a href="{{menu.Module.slug}}"> {{menu.Module.alias}} </a>
+        <a *ngIf="(menu.Module.module==='Admin')&&(menu.Module.ctl==='ngstore'); else next"
+           routerLinkActive="active"
+           routerLink="{{menu.Module.slug.replace(root,'')}}"
+           href="javascript: void(0)">{{menu.Module.alias}}</a>
+        <ng-template #next>
+            <a href="{{menu.Module.slug}}">{{menu.Module.alias}}</a>
+        </ng-template>
         <app-layouts-sidebar-submenu [allmenu]="arrallmenu" [parent]="menu.Module.id"
                                      [group]="menu.Module.group"></app-layouts-sidebar-submenu>
     </li>
