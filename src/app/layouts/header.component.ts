@@ -19,13 +19,9 @@ export class HeaderComponent {
     }
 
     private getProfile() {
-        this.appService.http.startLoad();
         this.subs = this.appService.getProfile().subscribe(
             data => {
                 this.profile = data.data;
-            },
-            error => {
-                this.appService.http.endLoad();
             }
         );
     }

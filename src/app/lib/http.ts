@@ -3,16 +3,12 @@ import {Headers, Http, RequestOptions, RequestOptionsArgs, Response, XHRBackend}
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-import {clientId, clientKey, serviceName, serviceRegion} from '../app.config';
-import {moduleStart, modalConfig} from './const';
+import {clientId, clientKey, serviceName, serviceRegion, rootUrl, apiUrl} from '../app.config';
 import {DsLib} from './lib';
 import {Auth} from './auth';
 
 @Injectable()
 export class HttpX extends Http {
-    public canActive = moduleStart;
-    public modalConfig = modalConfig;
-    public profile: any;
     public loading = {show: false, fade: false, title: '', prog: 0};
     public alertsys = [];
     private initParams = {
@@ -152,7 +148,18 @@ export class HttpX extends Http {
         }, 300);
     }
 
-    public logout() {
+    public checkAccess() {
+        const url = apiUrl + `auth/checklogin`;
+        const body = JSON.stringify({});
+        return this.post(url, body)
+            .map((res: Response) => {
+                return true;
+            }).catch(() => {
+                return Observable.of(false);
+            });
+    }
 
+    public logout() {
+        window.location.replace(rootUrl + '/admin/logout');
     }
 }
