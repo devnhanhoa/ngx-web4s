@@ -68,33 +68,29 @@
                 </tr>
                 </thead>
                 <tbody>
-                <ng-container *ngFor="let product of products">
-                    <ng-container *ngFor="let row of product.ProductItem; let i = index">
+                <ng-container *ngFor="let order of orders">
+                    <ng-container *ngFor="let row of order.order_detail; let i = index">
                         <tr *ngIf="i===0; else next">
-                            <td [attr.rowspan]="product.ProductItem.length">{{product.id}}-{{product.name}}</td>
+                            <td [attr.rowspan]="order.order_detail.length">{{order.Order.id}}-{{order.Order.code}}</td>
                             <td>
-                                <b>Mã:</b> {{row.code}}
-                                <br>
-                                <span [innerHTML]="row.meta"></span>
+
                             </td>
-                            <td class="text-center">{{row.barcode}}</td>
-                            <td class="text-center">{{row.price}}</td>
-                            <td class="text-center">{{row.inventory}}</td>
-                            <td [attr.rowspan]="product.ProductItem.length" class="text-center"><a
-                                    (click)="goDetail(product)"
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td [attr.rowspan]="order.order_detail.length" class="text-center"><a
+                                    (click)="goDetail(order)"
                                     tooltip="Click xem chi tiết" placement="top" class="data-info"><i
                                     class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                         </tr>
                         <ng-template #next>
                             <tr>
                                 <td>
-                                    <b>Mã:</b> {{row.code}}
-                                    <br>
-                                    <span [innerHTML]="row.meta"></span>
+
                                 </td>
-                                <td class="text-center">{{row.barcode}}</td>
-                                <td class="text-center">{{row.price}}</td>
-                                <td class="text-center">{{row.inventory}}</td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
                             </tr>
                         </ng-template>
                     </ng-container>

@@ -35,6 +35,15 @@ export class ChannelService {
         return this.http.post(url, body).map((res: Response) => res.json());
     }
 
+    public getLazOrder(sparams) {
+        const url = apiUrl + this.module + '/lazada/orders-synced';
+        const params: URLSearchParams = new URLSearchParams();
+        Object.keys(sparams).map((key) => {
+            params.set(key, sparams[key]);
+        });
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
+
     public syncLazOrder() {
         const url = apiUrl + this.module + '/lazada/sync-orders';
         const body = JSON.stringify({});

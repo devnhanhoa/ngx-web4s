@@ -17,7 +17,7 @@ import {arrPageSize} from '../../lib/const';
 export class LazOrdersComponent implements OnInit {
     @ViewChild('form') form: any;
     private subs: Subscription;
-    public products: Array<any> = [];
+    public orders: Array<any> = [];
     public bsModalRef: BsModalRef;
     public config = {
         animated: true,
@@ -34,12 +34,12 @@ export class LazOrdersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getLazProduct();
+        this.getLazOrders();
     }
 
     public search() {
         this.channelService.search.page = 1;
-        this.getLazProduct();
+        this.getLazOrders();
     }
 
     public resetForm() {
@@ -47,11 +47,11 @@ export class LazOrdersComponent implements OnInit {
         this.search();
     }
 
-    public getLazProduct() {
+    public getLazOrders() {
         this.channelService.http.startLoad();
-        this.subs = this.channelService.getLazProduct(this.channelService.search).subscribe(
+        this.subs = this.channelService.getLazOrder(this.channelService.search).subscribe(
             data => {
-                this.products = data.data.result;
+                this.orders = data.data.result;
                 this.paging = data.data.paging;
                 this.channelService.http.endLoad();
             },
@@ -73,23 +73,13 @@ export class LazOrdersComponent implements OnInit {
         );
     }
 
-    public prodUpload() {
-        this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-90'}));
-        this.bsModalRef.content.title = 'Chọn sản phẩm đồng bộ';
-        this.subs = this.modalService.onHide.subscribe((reason: string) => {
-            if (this.bsModalRef.content.action === 'sync') {
-                this.getLazProduct();
-            }
-        });
-    }
-
     public pageChanged(event: any): void {
         this.channelService.search.page = event.page;
-        this.getLazProduct();
+        this.getLazOrders();
     }
 
     public pageSizeChange() {
-        this.getLazProduct();
+        this.getLazOrders();
     }
 
     public goDetail = product => {
