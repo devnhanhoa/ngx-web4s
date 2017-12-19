@@ -24,12 +24,7 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.subs = this.notifyService.getSerNotify().subscribe(
-            data => {
-                this.notify = data.data.data;
-                this._getNotify();
-            }
-        );
+
     }
 
     private _getNotify() {
@@ -39,16 +34,17 @@ export class SidebarComponent implements OnInit {
     }
 
     private getSidebar() {
-        this.appService.http.startLoad();
         this.subs = this.appService.getSidebar().subscribe(
             data => {
                 this.menuRoot = data.data.menu_root;
                 this.allMenu = data.data.all_menu;
                 this.setActive();
-                this.appService.http.endLoad();
-            },
-            error => {
-                this.appService.http.endLoad();
+                this.subs = this.notifyService.getSerNotify().subscribe(
+                    res => {
+                        this.notify = res.data.data;
+                        this._getNotify();
+                    }
+                );
             }
         );
     }
