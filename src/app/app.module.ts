@@ -22,6 +22,7 @@ import {Auth} from './lib/auth';
 
 import {AppService} from './service/app.service';
 import {NotifyService} from './service/notify.service';
+import {NotifyDirective} from './directive/notify/notify.directive';
 
 import {environment} from '../environments/environment';
 
@@ -35,7 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
         HeaderComponent,
         FooterComponent,
         SidebarComponent,
-        SubmenuComponent
+        SubmenuComponent,
+        NotifyDirective
     ],
     imports: [
         BrowserModule,

@@ -24,6 +24,15 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.subs = this.notifyService.getSerNotify().subscribe(
+            data => {
+                this.notify = data.data.data;
+                this._getNotify();
+            }
+        );
+    }
+
+    private _getNotify() {
         this.subs = this.notifyService.getNotify().subscribe(data => {
             this.notify = data.data.data;
         });

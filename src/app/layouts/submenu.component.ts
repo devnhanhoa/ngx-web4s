@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {rootUri} from '../app.config';
 
 @Component({
@@ -7,7 +7,7 @@ import {rootUri} from '../app.config';
     styleUrls: ['./submenu.component.css']
 })
 
-export class SubmenuComponent implements OnInit, OnChanges {
+export class SubmenuComponent implements OnInit {
     public root = rootUri;
 
     @Input('menu')
@@ -19,9 +19,6 @@ export class SubmenuComponent implements OnInit, OnChanges {
     @Input('show')
     public show = false;
 
-    @Input('notify')
-    public notify = [];
-
     public submenu = [];
     public arrallmenu = [];
     public parent = '0';
@@ -32,12 +29,6 @@ export class SubmenuComponent implements OnInit, OnChanges {
     ngOnInit() {
         this.parent = this.menu.Module.parent;
         this.getSubmenu();
-    }
-
-    ngOnChanges(changes) {
-        if (changes.notify) {
-
-        }
     }
 
     private getSubmenu() {

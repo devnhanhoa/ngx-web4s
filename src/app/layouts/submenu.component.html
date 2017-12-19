@@ -3,7 +3,7 @@
 <ul *ngIf="submenu.length" [style.display]="show ? 'block' : 'none'"
     [ngClass]="(show&&parent!=='0')? 'subsubmenu': ''"
     class="submenu">
-    <li *ngFor="let smenu of submenu" (mouseleave)="showChildren(parent==='0'||false)">
+    <li *ngFor="let smenu of submenu" (mouseleave)="showChildren(parent==='0'||false)" data-id="{{smenu.Module.id}}">
         <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
            routerLinkActive="active"
            routerLink="{{smenu.Module.slug.replace(root,'')}}"
@@ -11,8 +11,7 @@
         <ng-template #next>
             <a href="{{smenu.Module.slug}}">{{smenu.Module.alias}}</a>
         </ng-template>
-        <span class="badge badge-important">16</span>
-        <app-layouts-sidebar-submenu [menu]="smenu" [notify]="notify"
-                                     [allmenu]="arrallmenu"></app-layouts-sidebar-submenu>
+        <span class="badge badge-important"></span>
+        <app-layouts-sidebar-submenu [menu]="smenu" [allmenu]="arrallmenu"></app-layouts-sidebar-submenu>
     </li>
 </ul>
