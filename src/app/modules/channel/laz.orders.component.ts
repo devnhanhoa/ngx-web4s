@@ -61,9 +61,9 @@ export class LazOrdersComponent implements OnInit {
         );
     }
 
-    public prodDownload() {
+    public orderDownload() {
         this.channelService.http.startLoad();
-        this.subs = this.channelService.syncLazProduct().subscribe(
+        this.subs = this.channelService.syncLazOrder().subscribe(
             data => {
                 this.channelService.http.endLoad();
             },

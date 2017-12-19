@@ -10,8 +10,9 @@
                                 <div class="form-group form-input-lg">
                                     <input title=""
                                            [(ngModel)]="channelService.search.title"
-                                           placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
-                                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
+                                           placeholder="Tìm theo Mã đơn hàng, Tên sản phẩm, Tên khách hàng "
+                                           name="title"
+                                           tooltip="Tìm theo Mã đơn hàng, Tên sản phẩm, Tên khách hàng " placement="top"
                                            class="form-control">
                                 </div>
                             </div>
@@ -30,14 +31,18 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md"
+                    <button type="button" (click)="orderDownload()" class="btn btn-primary btn-md"
                             tooltip="Click để đồng bộ dữ liệu sản phẩm từ Lazada về hệ thống." placement="top">
-                        <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
+                        <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
                     </button>
                 </div>
                 <div class="col-md-6 col-xs-6 text-right">
-                    <div><a class="text-info">{{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' /
-                        '+paging.count}} Sản phẩm</a></div>
+                    <div>
+                        <a class="text-info">
+                            {{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}}
+                            Đơn hàng
+                        </a>
+                    </div>
                     <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                 [maxSize]="maxSize"
                                 [itemsPerPage]="channelService.search.page_size"
