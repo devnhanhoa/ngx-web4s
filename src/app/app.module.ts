@@ -21,6 +21,7 @@ import {HttpX} from './lib/http';
 import {Auth} from './lib/auth';
 
 import {AppService} from './service/app.service';
+import {NotifyService} from './service/notify.service';
 
 import {environment} from '../environments/environment';
 
@@ -52,7 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
         ModalModule.forRoot(),
         TooltipModule.forRoot()
     ],
-    providers: [AppGuard, HttpX, Auth, AppService],
+    providers: [AppGuard, HttpX, Auth, AppService, NotifyService],
     bootstrap: [AppComponent],
     entryComponents: []
 })

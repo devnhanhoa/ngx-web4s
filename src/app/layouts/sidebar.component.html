@@ -8,8 +8,9 @@
                     <span class="menu-text"> {{menu.Module.alias}} </span>
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
-                <app-layouts-sidebar-submenu [allmenu]="allMenu" [show]="(select.Module.id===menu.Module.id)"
-                                             [group]="menu.Module.group"></app-layouts-sidebar-submenu>
+                <app-layouts-sidebar-submenu [menu]="menu" [allmenu]="allMenu"
+                                             [show]="(select.Module.id===menu.Module.id)"
+                                             [notify]="notify"></app-layouts-sidebar-submenu>
             </li>
         </ul>
     </div>

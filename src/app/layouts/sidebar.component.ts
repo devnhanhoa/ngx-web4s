@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {AppService} from '../service/app.service';
+import {NotifyService} from '../service/notify.service';
 import {rootUri} from '../app.config';
 
 @Component({
@@ -9,18 +11,22 @@ import {rootUri} from '../app.config';
 })
 
 export class SidebarComponent implements OnInit {
-    private subs: any;
+    private subs: Subscription;
     public menuRoot = [];
     public allMenu = [];
     public select = {Module: {id: ''}};
     private uri: string;
+    public notify = [];
 
-    constructor(public appService: AppService) {
+    constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
         this.getSidebar();
     }
 
     ngOnInit() {
+        this.subs = this.notifyService.getNotify().subscribe(data => {
+            this.notify = data.data.data;
+        });
     }
 
     private getSidebar() {
