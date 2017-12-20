@@ -55,7 +55,7 @@ export class LazOrdersComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.syncLazOrder().subscribe(
             data => {
-                this.channelService.http.endLoad();
+                this.getLazOrders();
             },
             error => {
                 this.channelService.http.endLoad();
