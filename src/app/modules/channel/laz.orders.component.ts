@@ -1,11 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
-import {BsModalService} from 'ngx-bootstrap/modal';
-import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 
-import {ProductsComponent} from './modal/products.component';
 import {arrPageSize} from '../../lib/const';
 
 @Component({
@@ -18,18 +15,11 @@ export class LazOrdersComponent implements OnInit {
     @ViewChild('form') form: any;
     private subs: Subscription;
     public orders: Array<any> = [];
-    public bsModalRef: BsModalRef;
-    public config = {
-        animated: true,
-        keyboard: true,
-        backdrop: true,
-        ignoreBackdropClick: false
-    };
     public maxSize = 5;
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
 
-    constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
+    constructor(public channelService: ChannelService, private router: Router) {
 
     }
 
@@ -82,8 +72,8 @@ export class LazOrdersComponent implements OnInit {
         this.getLazOrders();
     }
 
-    public goDetail = product => {
+    public goDetail = order => {
         this.channelService.http.loading.show = true;
-        this.router.navigate([`/channel/laz-orders/${product.id}`]);
+        this.router.navigate([`/channel/laz-orders/${order.id}`]);
     }
 }

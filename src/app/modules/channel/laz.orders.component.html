@@ -102,7 +102,7 @@
                                 <p>{{order.Order.total}}</p>
                             </td>
                             <td [attr.rowspan]="order.order_detail.length" class="text-center"><a
-                                    (click)="goDetail(order)"
+                                    (click)="goDetail(order.Order)"
                                     tooltip="Click xem chi tiết" placement="top" class="data-info"><i
                                     class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                         </tr>

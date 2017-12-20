@@ -5,100 +5,174 @@
             <div class="panel panel-default page-header">
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#main">Thông tin chính</a></li>
-                        <li><a data-toggle="tab" href="#item">Các phiên bản</a></li>
-                        <li><a data-toggle="tab" href="#seo">SEO</a></li>
-                        <li><a data-toggle="tab" href="#other">Thông tin khác</a></li>
+                        <li class="active">
+                            <a data-toggle="tab" href="#main">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                Thông tin đơn hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#history">
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                Lịch sử cập nhật trạng thái
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
                         <div id="main" class="tab-pane fade in active">
-                            <form *ngIf="lazproduct" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Tên sản phẩm:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.ProductContent.name}}</p>
-                                    </div>
+                            <div *ngIf="lazorder" class="row">
+                                <div class="col-md-4">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2"><b> <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                Thông tin đơn hàng </b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-qrcode" aria-hidden="true"></i> Mã đơn hàng</td>
+                                            <td>{{lazorder.arr_data.Order.code}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trạng thái</td>
+                                            <td>{{lazorder.arr_data.Order.status_cf}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loại đơn hàng</td>
+                                            <td>{{lazorder.arr_data.Order.order_flg}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nguồn đơn hàng</td>
+                                            <td>{{lazorder.arr_data.Order.order_line}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cửa hàng</td>
+                                            <td>{{lazorder.arr_data.Order.shop_id}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-calendar" aria-hidden="true"></i> Ngày tạo</td>
+                                            <td>{{lazorder.arr_data.Order.created}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Đường dẫn:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Menu.url}}</p>
-                                    </div>
+                                <div class="col-md-4">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2"><b> <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                Thanh toán và chiết khấu </b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tổng tiền</td>
+                                            <td>{{lazorder.arr_data.Order.total}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Chiết khấu</td>
+                                            <td>{{lazorder.arr_data.Order.total_discount}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coupon</td>
+                                            <td>{{lazorder.arr_data.Order.total_coupon}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VAT</td>
+                                            <td>{{lazorder.arr_data.Order.total_vat}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiền mặt</td>
+                                            <td>{{lazorder.arr_data.Order.total_cash}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Chuyển khoản</td>
+                                            <td>{{lazorder.arr_data.Order.total_atm}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Trạng thái:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.status}}</p>
-                                    </div>
+                                <div class="col-md-4">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2"><b> <i class="fa fa-user" aria-hidden="true"></i> Thông tin
+                                                khách hàng </b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> Họ và tên</td>
+                                            <td>{{lazorder.arr_data.OrderContact.full_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-phone" aria-hidden="true"></i> Số điện thoại</td>
+                                            <td>{{lazorder.arr_data.OrderContact.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ</td>
+                                            <td>{{lazorder.arr_data.OrderContact.address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</td>
+                                            <td>{{lazorder.arr_data.OrderContact.email}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Danh mục:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.categories}}</p>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table *ngIf="lazorder" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">STT</th>
+                                            <th><i class="fa fa-qrcode" aria-hidden="true"></i> Mã SP</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Giá</th>
+                                            <th>Chiết khấu</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container *ngFor="let order of lazorder.arr_order_details; let i = index">
+                                            <tr>
+                                                <td class="text-center">{{i+1}}</td>
+                                                <td>{{order.ProductItem.code}}</td>
+                                                <td>{{order.ProductContent.name}}</td>
+                                                <td>{{order.OrderDetail.quantity}}</td>
+                                                <td>{{order.OrderDetail.price}}</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </ng-container>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Loại sản phẩm:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.type_product}}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Thương hiệu:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.manufac_id}}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Xuất xứ:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.countryId}}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Loại bảo hành:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.warranty_type}}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Thời gian bảo hành:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.Product.warranty}}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Thông tin nổi bật:</label>
-                                    <div class="col-sm-10">
-                                        <div [innerHTML]="lazproduct.arr_data.ProductContent.description"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Mô tả sản phẩm:</label>
-                                    <div class="col-sm-10">
-                                        <div [innerHTML]="lazproduct.arr_data.ProductContent.content"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">Tags:</label>
-                                    <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.ProductContent.tag}}</p>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                        <div id="item" class="tab-pane fade">
-                            <h3>Menu 1</h3>
-                            <p>Some content in menu 1.</p>
-                        </div>
-                        <div id="seo" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Some content in menu 2.</p>
-                        </div>
-                        <div id="other" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Some content in menu 2.</p>
+                        <div id="history" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table *ngIf="lazorder" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Người cập nhật</th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <th class="text-center">Thời gian</th>
+                                            <th class="text-center">Ghi chú</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container *ngFor="let item of lazorder.arr_histories">
+                                            <tr>
+                                                <td>{{item.User.full_name}}</td>
+                                                <td>{{item.OrderHistory.status}}</td>
+                                                <td>{{item.OrderHistory.updated}}</td>
+                                                <td>{{item.OrderHistory.description}}</td>
+                                            </tr>
+                                        </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class LazOrderDetailComponent implements OnInit {
     private subs: Subscription;
-    public lazproduct: any;
+    public lazorder: any;
     private id;
 
     constructor(public channelService: ChannelService, private route: ActivatedRoute, private router: Router) {
@@ -22,15 +22,15 @@ export class LazOrderDetailComponent implements OnInit {
 
     ngOnInit() {
         if (this.id) {
-            this.getSignLazProduct();
+            this.getSignLazOrder();
         }
     }
 
-    private getSignLazProduct() {
+    private getSignLazOrder() {
         this.channelService.http.startLoad();
-        this.subs = this.channelService.getSignLazProduct(this.id).subscribe(
+        this.subs = this.channelService.getSignLazOrder(this.id).subscribe(
             data => {
-                this.lazproduct = data.data;
+                this.lazorder = data.data;
                 this.channelService.http.endLoad();
             },
             error => {
