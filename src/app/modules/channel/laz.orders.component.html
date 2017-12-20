@@ -39,7 +39,8 @@
                 <div class="col-md-6 col-xs-6 text-right">
                     <div>
                         <a class="text-info">
-                            {{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}}
+                            {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                            paging.count:paging.page*paging.limit) +' / ' + paging.count}}
                             Đơn hàng
                         </a>
                     </div>
@@ -56,28 +57,50 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th class="text-center" rowspan="2">Sản phẩm</th>
-                    <th class="text-center" colspan="4">Thuộc tính</th>
-                    <th class="text-center" style="max-width: 60px;" rowspan="2">#</th>
-                </tr>
-                <tr>
-                    <th class="text-center">Thông tin chung</th>
-                    <th class="text-center">Mã vạch</th>
+                    <th class="text-center">Mã đơn hàng</th>
+                    <th class="text-center">Khách hàng</th>
+                    <th class="text-center">Sản phẩm</th>
                     <th class="text-center">Giá</th>
-                    <th class="text-center">Tồn kho</th>
+                    <th class="text-center">SL</th>
+                    <th class="text-center">Tổng tiền</th>
+                    <th class="text-center" style="max-width: 60px;">#</th>
                 </tr>
                 </thead>
                 <tbody>
                 <ng-container *ngFor="let order of orders">
                     <ng-container *ngFor="let row of order.order_detail; let i = index">
                         <tr *ngIf="i===0; else next">
-                            <td [attr.rowspan]="order.order_detail.length">{{order.Order.id}}-{{order.Order.code}}</td>
-                            <td>
-
+                            <td [attr.rowspan]="order.order_detail.length">
+                                <p><strong><i class="fa fa-qrcode" aria-hidden="true"></i> Mã: </strong>{{order.Order.code}}
+                                </p>
+                                <p><strong>Loại đơn: </strong>{{order.Order.order_flg}}</p>
+                                <p><strong>Nguồn: </strong>{{order.Order.order_line}}</p>
+                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> :</strong>{{order.Order.created}}
+                                </p>
                             </td>
-                            <td class="text-center"></td>
-                            <td class="text-center"></td>
-                            <td class="text-center"></td>
+                            <td [attr.rowspan]="order.order_detail.length">
+                                <p><strong><i class="fa fa-user" aria-hidden="true"></i> </strong>{{order.OrderContact.full_name}}
+                                </p>
+                                <p><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{order.OrderContact.phone}}
+                                </p>
+                                <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{order.OrderContact.address}}
+                                </p>
+                            </td>
+                            <td>
+                                <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
+                                </p>
+                                <p><strong><i class="fa fa-barcode" aria-hidden="true"></i> </strong>{{row.ProductItem.barcode}}
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p>{{row.OrderDetail.price}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p>{{row.OrderDetail.quantity}}</p>
+                            </td>
+                            <td [attr.rowspan]="order.order_detail.length" class="text-right">
+                                <p>{{order.Order.total}}</p>
+                            </td>
                             <td [attr.rowspan]="order.order_detail.length" class="text-center"><a
                                     (click)="goDetail(order)"
                                     tooltip="Click xem chi tiết" placement="top" class="data-info"><i
@@ -86,11 +109,17 @@
                         <ng-template #next>
                             <tr>
                                 <td>
-
+                                    <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
+                                    </p>
+                                    <p><strong><i class="fa fa-barcode" aria-hidden="true"></i> </strong>{{row.ProductItem.barcode}}
+                                    </p>
                                 </td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
+                                <td class="text-center">
+                                    <p>{{row.OrderDetail.price}}</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>{{row.OrderDetail.quantity}}</p>
+                                </td>
                             </tr>
                         </ng-template>
                     </ng-container>

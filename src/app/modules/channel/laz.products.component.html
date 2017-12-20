@@ -41,7 +41,13 @@
                     </button>
                 </div>
                 <div class="col-md-6 col-xs-6 text-right">
-                    <div><a class="text-info">{{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}} Sản phẩm</a></div>
+                    <div>
+                        <a class="text-info">
+                            {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                            paging.count:paging.page*paging.limit) +' / ' + paging.count}}
+                            Sản phẩm
+                        </a>
+                    </div>
                     <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                 [maxSize]="maxSize"
                                 [itemsPerPage]="channelService.search.page_size"
