@@ -1,4 +1,4 @@
-export const rootUrl = 'http://dev.web4sgold.com';
+export const rootUrl = 'http://store.webaz.com.vn';
 export const rootUri = '/admin/ngstore';
 export const apiUrl = '../../api/';  // URL to web api
 

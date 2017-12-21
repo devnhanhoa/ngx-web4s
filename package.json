@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host dev.web4sgold.com --proxy-config proxy.conf.json",
+    "start": "ng serve --host dev.webaz.com.vn --port 80 --proxy-config proxy.conf.json",
     "build": "ng build --prod --base-href \"/admin/ngstore/\" --output-hashing none",
     "test": "ng test",
     "lint": "ng lint",
