@@ -10,7 +10,7 @@ const routes: Routes = [
     {path: '', component: LazProductsComponent},
     {path: 'laz-products', component: LazProductsComponent},
     {path: 'laz-products/:id', component: LazProductDetailComponent},
-    {path: 'laz-orders', component: LazOrdersComponent},
+    {path: 'laz-orders', component: LazOrdersComponent, data: { breadcrumb: 'Sản phẩm Lazada new'} },
     {path: 'laz-orders/:id', component: LazOrderDetailComponent}
 ];
 
