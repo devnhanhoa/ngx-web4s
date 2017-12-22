@@ -7,8 +7,6 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#main">Thông tin chính</a></li>
                         <li><a data-toggle="tab" href="#item">Các phiên bản</a></li>
-                        <li><a data-toggle="tab" href="#seo">SEO</a></li>
-                        <li><a data-toggle="tab" href="#other">Thông tin khác</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -35,7 +33,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Danh mục:</label>
                                     <div class="col-sm-10">
-                                        <p class="form-control-static">{{lazproduct.arr_data.categories}}</p>
+                                        <p class="form-control-static">{{lazproduct.arr_data.Product.categories}}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -89,16 +87,39 @@
                             </form>
                         </div>
                         <div id="item" class="tab-pane fade">
-                            <h3>Menu 1</h3>
-                            <p>Some content in menu 1.</p>
-                        </div>
-                        <div id="seo" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Some content in menu 2.</p>
-                        </div>
-                        <div id="other" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Some content in menu 2.</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table *ngIf="lazproduct" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">STT</th>
+                                            <th><i class="fa fa-qrcode" aria-hidden="true"></i> Mã SP</th>
+                                            <th>Barcode</th>
+                                            <th>Giá bán</th>
+                                            <th>Giá khuyến mãi</th>
+                                            <th>Thông tin khác</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <ng-container *ngFor="let item of lazproduct.arr_item_full; let i = index">
+                                            <tr>
+                                                <td class="text-center">{{i+1}}</td>
+                                                <td>{{item.code}}</td>
+                                                <td>{{item.barcode}}</td>
+                                                <td>{{item.price}}</td>
+                                                <td>{{item.special_price}}</td>
+                                                <td>
+                                                    <p>Chiều cao: {{item.height}}</p>
+                                                    <p>Chiều rộng: {{item.width}}</p>
+                                                    <p>Chiều dài: {{item.length}}</p>
+                                                    <p>Khối lượng: {{item.weight}}</p>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
