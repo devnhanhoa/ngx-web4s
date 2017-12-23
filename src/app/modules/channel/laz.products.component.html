@@ -83,7 +83,7 @@
                                 <span [innerHTML]="row.meta"></span>
                             </td>
                             <td class="text-center">{{row.barcode}}</td>
-                            <td class="text-center">{{row.price}}</td>
+                            <td class="text-center">{{row.price | number}}</td>
                             <td class="text-center">{{row.inventory}}</td>
                             <td [attr.rowspan]="product.ProductItem.length" class="text-center"><a
                                     (click)="goDetail(product)"
@@ -98,7 +98,7 @@
                                     <span [innerHTML]="row.meta"></span>
                                 </td>
                                 <td class="text-center">{{row.barcode}}</td>
-                                <td class="text-center">{{row.price}}</td>
+                                <td class="text-center">{{row.price | number}}</td>
                                 <td class="text-center">{{row.inventory}}</td>
                             </tr>
                         </ng-template>
