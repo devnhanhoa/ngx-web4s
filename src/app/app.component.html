@@ -3,6 +3,7 @@
         <app-layouts-header></app-layouts-header>
         <div class="main-container">
             <app-layouts-sidebar></app-layouts-sidebar>
+            <app-public-breadcrumb></app-public-breadcrumb>
             <div class="main-content">
                 <div *ngFor="let item of appService.http.alertsys"
                      class="alert {{item.type}} alert-dismissable fade in">

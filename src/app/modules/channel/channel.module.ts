@@ -26,7 +26,7 @@ import {LazOrderDetailComponent} from './laz.order.detail.component';
         LazProductsComponent,
         LazProductDetailComponent,
         LazOrderDetailComponent,
-        ProductsComponent,
+        ProductsComponent
     ],
     exports: [],
     providers: [ChannelService, ProductsService],

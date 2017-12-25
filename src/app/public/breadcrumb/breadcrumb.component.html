@@ -1,8 +1,14 @@
 <div class="breadcrumbs" id="breadcrumbs">
   <ul class="breadcrumb">
-    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Trang
+    <li><i class="ace-icon fa fa-home home-icon"></i> <a routerLink="">Trang
       chủ</a></li>
-    <li><a href="http://localhost/admin/product/list-products">Sản phẩm</a></li>
-    <li class="active">Danh sách sản phẩm lazada</li>
+    <li *ngFor="let breadcrumb of breadcrumbs">
+        <!--<ng-template ngFor let-breadcrumb [ngForOf]="breadcrumbs"><a routerLink="[breadcrumb.url]">{{breadcrumb.label}}</a></ng-template>-->
+      <a routerLink="[breadcrumb.url]">{{breadcrumb.label}}</a>
+    </li>
+    <!--<li>-->
+      <!--<p *ngFor="let breadcrumb of breadcrumbs"><a routerLink="[breadcrumb.url]">{{breadcrumb.label}}</a></p>-->
+
+    <!--</li>-->
   </ul>
 </div>

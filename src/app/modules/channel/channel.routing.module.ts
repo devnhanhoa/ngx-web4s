@@ -8,9 +8,9 @@ import {LazOrderDetailComponent} from './laz.order.detail.component';
 
 const routes: Routes = [
     {path: '', component: LazProductsComponent},
-    {path: 'laz-products', component: LazProductsComponent},
+    {path: 'laz-products', component: LazProductsComponent, data: { breadcrumb: 'Sản phẩm Lazada'}},
     {path: 'laz-products/:id', component: LazProductDetailComponent},
-    {path: 'laz-orders', component: LazOrdersComponent, data: { breadcrumb: 'Sản phẩm Lazada new'} },
+    {path: 'laz-orders', component: LazOrdersComponent, data: { breadcrumb: 'Đơn hàng Lazada'}},
     {path: 'laz-orders/:id', component: LazOrderDetailComponent}
 ];
 

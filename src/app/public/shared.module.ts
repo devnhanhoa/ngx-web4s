@@ -1,15 +1,17 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
+import {BreadCrumbComponent} from './breadcrumb/breadcrumb.component';
+import {CommonModule} from '@angular/common';
+
 
 import {BootstrapSelectDirective} from '../directive/bootstrap-select/bootstrap-select.directive';
 import {SubLoadingDirective} from '../directive/sub-loading/sub-loading.directive';
 
 @NgModule({
-    imports: [],
-    declarations: [BreadcrumbComponent,
+    imports: [CommonModule],
+    declarations: [BreadCrumbComponent,
         BootstrapSelectDirective,
         SubLoadingDirective],
-    exports: [BreadcrumbComponent,
+    exports: [BreadCrumbComponent,
         BootstrapSelectDirective,
         SubLoadingDirective],
     providers: []

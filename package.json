@@ -29,6 +29,7 @@
     "crypto-js": "^3.1.9-1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "ng2-breadcrumbs": "^0.1.281",
     "ngx-bootstrap": "^2.0.0-beta.10",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
