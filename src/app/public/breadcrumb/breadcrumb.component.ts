@@ -46,29 +46,6 @@ export class BreadCrumbComponent implements OnInit {
             if (!child.snapshot.data.hasOwnProperty(ROUTE_DATA_BREADCRUMB)) {
                 return this.getBreadcrumbs(child, url, breadcrumbs);
             }
-            // if (child.snapshot.url.map(segment => segment.path).length === 0) {
-            //     return this.getBreadcrumbs(child, url, breadcrumbs);
-            // }
-            // const routeArray = child.snapshot.url.map(segment => segment.path);
-            // for (let i = 0; i < routeArray.length; i++) {
-            //     if (Object.keys(child.snapshot.params).length > 0) {
-            //         if (this.isParam(child.snapshot.params, routeArray[i])) {
-            //             label = routeArray[i];
-            //         } else {
-            //             label = child.snapshot.data[ROUTE_DATA_BREADCRUMB];
-            //         }
-            //     } else {
-            //         label = child.snapshot.data[ROUTE_DATA_BREADCRUMB];
-            //     }
-            //     const routeURL = routeArray[i];
-            //     url += `/${routeURL}`;
-            //     const breadcrumb: IBreadcrumb = {
-            //         label: label,
-            //         params: child.snapshot.params,
-            //         url: url };
-            //     breadcrumbs.push(breadcrumb);
-            // }
-            // return this.getBreadcrumbs(child, url, breadcrumbs);
             const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
             url += `/${routeURL}`;
             const breadcrumb: IBreadcrumb = {
@@ -82,14 +59,5 @@ export class BreadCrumbComponent implements OnInit {
         return breadcrumbs;
     }
 
-    // private isParam(params: Params, segment: string) {
-    //     for (const  key of Object.keys(params)) {
-    //         const value = params[key];
-    //         if (value === segment) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 
 }
