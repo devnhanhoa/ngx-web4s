@@ -13,7 +13,11 @@ export class LazOrderDetailComponent implements OnInit {
     private subs: Subscription;
     public lazorder: any;
     private id;
-
+    public lazorderdetailArray: any[] = [
+        {label: 'Đơn hàng', lazurl: ''},
+        {label: 'Đơn hàng Lazada', lazurl: '/channel/laz-orders/'},
+        {label: 'Chi tiết đơn hàng', lazurl: ''}
+    ];
     constructor(public channelService: ChannelService, private route: ActivatedRoute, private router: Router) {
         this.route.params.subscribe(params => {
             this.id = params['id'];

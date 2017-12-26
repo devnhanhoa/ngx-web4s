@@ -19,8 +19,8 @@ export class LazOrdersComponent implements OnInit {
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
     public lazorderArray: any[] = [
-        {label: 'Đơn hàng'},
-        {label: 'Đơn hàng Lazada'}
+        {label: 'Đơn hàng', lazurl: ''},
+        {label: 'Đơn hàng Lazada', lazurl: '/channel/laz-orders/'}
     ];
 
     constructor(public channelService: ChannelService, private router: Router) {

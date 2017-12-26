@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <!--<app-public-breadcrumb></app-public-breadcrumb>-->
+            <app-public-breadcrumb [Breadcrumbs]="lazorderdetailArray"></app-public-breadcrumb>
             <div class="panel panel-default page-header">
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
@@ -138,7 +138,7 @@
                                                 <td>{{order.ProductItem.code}}</td>
                                                 <td>{{order.ProductContent.name}}</td>
                                                 <td>{{order.OrderDetail.quantity}}</td>
-                                                <td>{{order.OrderDetail.price}}</td>
+                                                <td>{{order.OrderDetail.price | number}}</td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
