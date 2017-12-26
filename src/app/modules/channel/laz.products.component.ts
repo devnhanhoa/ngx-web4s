@@ -71,7 +71,7 @@ export class LazProductsComponent implements OnInit {
                 this.getLazProduct();
             },
             error => {
-                this.channelService.http.endLoad();
+                this.getLazProduct();
             }
         );
     }
