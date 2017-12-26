@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/of';
 
@@ -11,8 +11,9 @@ import 'rxjs/add/observable/of';
 
 export class BreadCrumbComponent implements OnInit {
     @Input() public Breadcrumbs: any[] = [];
-    constructor(
-    ) {}
+
+    constructor() {
+    }
 
     ngOnInit() {
     }
