@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <!--<app-public-breadcrumb></app-public-breadcrumb>-->
+            <app-public-breadcrumb [Breadcrumbs]="lazproductArray"></app-public-breadcrumb>
             <div class="panel panel-default page-header">
                 <div class="panel-body">
                     <form novalidate (ngSubmit)="search()" #form="ngForm">

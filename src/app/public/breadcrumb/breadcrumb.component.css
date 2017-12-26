@@ -1,7 +1,6 @@
 .breadcrumbs {
     position: fixed;
     z-index: 1040;
-    margin-left: 190px;
     top: 0;
 }
 .breadcrumbs .breadcrumb {

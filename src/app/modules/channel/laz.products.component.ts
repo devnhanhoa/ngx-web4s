@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -28,7 +28,10 @@ export class LazProductsComponent implements OnInit {
     public maxSize = 5;
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
-
+    public lazproductArray: any[] = [
+        {label: 'Sản phẩm'},
+        {label: 'Sản phẩm Lazada'}
+    ];
     constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
     }

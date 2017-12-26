@@ -18,6 +18,10 @@ export class LazOrdersComponent implements OnInit {
     public maxSize = 5;
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
+    public lazorderArray: any[] = [
+        {label: 'Đơn hàng'},
+        {label: 'Đơn hàng Lazada'}
+    ];
 
     constructor(public channelService: ChannelService, private router: Router) {
 
