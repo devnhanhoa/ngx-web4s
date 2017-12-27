@@ -1,0 +1,6 @@
+<div *ngFor="let item of appService.http.alertsys"
+     class="alert {{item.type}} alert-dismissable fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong><i class="fa {{item.iconClass}}" aria-hidden="true"></i> {{item.title}}</strong>
+  {{item.messages}}
+</div>

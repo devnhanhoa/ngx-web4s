@@ -4,12 +4,8 @@
         <div class="main-container">
             <app-layouts-sidebar></app-layouts-sidebar>
             <div class="main-content">
-                <div *ngFor="let item of appService.http.alertsys"
-                     class="alert {{item.type}} alert-dismissable fade in">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong><i class="fa {{item.iconClass}}" aria-hidden="true"></i> {{item.title}}</strong>
-                    {{item.messages}}
-                </div>
+                <app-public-notification></app-public-notification>
+
                 <router-outlet></router-outlet>
             </div>
         </div>
