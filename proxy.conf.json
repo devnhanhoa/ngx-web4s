@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://dev.webaz.com.vn:82",
+    "target": "http://store.webaz.com.vn",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
