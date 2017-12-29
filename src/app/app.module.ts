@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
+
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './layouts/header.component';
 import {SidebarComponent} from './layouts/sidebar.component';

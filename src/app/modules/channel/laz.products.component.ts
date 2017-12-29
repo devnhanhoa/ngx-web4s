@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 
 import {ProductsComponent} from './modal/products.component';
 import {arrPageSize} from '../../lib/const';
+import {rootUrl} from "../../app.config";
 
 @Component({
     selector: 'app-channel',
