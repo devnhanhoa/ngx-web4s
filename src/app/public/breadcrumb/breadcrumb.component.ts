@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 @Component({
     selector: 'app-public-breadcrumb',
     templateUrl: './breadcrumb.component.html',
-    styleUrls: ['./breadcrumb.component.scss']
+    styleUrls: ['./breadcrumb.component.css']
 })
 
 export class BreadCrumbComponent implements OnInit {
