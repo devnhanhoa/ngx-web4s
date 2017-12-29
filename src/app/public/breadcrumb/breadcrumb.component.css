@@ -1,0 +1,18 @@
+.breadcrumbs {
+    position: fixed;
+    z-index: 1040;
+    top: 0;
+}
+.breadcrumbs .breadcrumb {
+    margin: 10px 0 0 0;
+    line-height: 15px;
+}
+.breadcrumbs .breadcrumb .home-icon {
+    line-height: 13px;
+}
+.breadcrumbs .breadcrumb li a {
+    color: #fff;
+}
+.breadcrumbs .breadcrumb li + li:before {
+    top: 1px;
+}
