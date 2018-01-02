@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 
 import {ProductsComponent} from './modal/products.component';
 import {arrPageSize} from '../../lib/const';
-import {rootUrl} from "../../app.config";
+import {rootUrl} from '../../app.config';
 
 @Component({
     selector: 'app-channel',
@@ -33,6 +33,7 @@ export class LazProductsComponent implements OnInit {
         {label: 'Sản phẩm', lazurl: ''},
         {label: 'Sản phẩm Lazada', lazurl: '/channel/laz-products'}
     ];
+    public rootUrl = rootUrl;
     constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
     }

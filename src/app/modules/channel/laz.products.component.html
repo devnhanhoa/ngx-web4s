@@ -77,8 +77,8 @@
                     <ng-container *ngFor="let row of product.ProductItem; let i = index">
                         <tr *ngIf="i===0; else next">
                             <td [attr.rowspan]="product.ProductItem.length">
-                                <a href="http://store.webaz.com.vn/{{product.ProductItem[0].media.path_original}}" target="_blank" *ngIf="product.ProductItem[0].media && product.ProductItem[0].media.path_original">
-                                    <img class="thumb_image" src="http://store.webaz.com.vn/{{product.ProductItem[0].media.path_original}}" alt="">
+                                <a href="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" target="_blank" *ngIf="product.ProductItem[0].media && product.ProductItem[0].media.path_original">
+                                    <img class="thumb_image" src="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" alt="">
                                 </a>
                                 <span class="pattern_thumb" *ngIf="!product.ProductItem[0].media || !product.ProductItem[0].media.path_original"><i class="far fa-image"></i></span>
                                 {{product.id}}-{{product.name}}
