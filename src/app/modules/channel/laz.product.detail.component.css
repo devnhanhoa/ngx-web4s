@@ -3,6 +3,6 @@
 }
 .thumb_image {
     width: 3%;
-    max-width: 50px;
-    min-width: 50px;
+    max-width: 150px;
+    min-width: 60px;
 }
