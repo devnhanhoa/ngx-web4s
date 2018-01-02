@@ -104,7 +104,13 @@
                                         <ng-container *ngFor="let item of lazproduct.arr_item_full; let i = index">
                                             <tr>
                                                 <td class="text-center">{{i+1}}</td>
-                                                <td>{{item.code}}</td>
+                                                <td>
+                                                    <a href="{{rootUrl}}/{{item.media[0].original}}" target="_blank" *ngIf="item.media[0] && item.media[0].original">
+                                                        <img class="thumb_image" src="{{rootUrl}}/{{item.media[0].original}}" alt="">
+                                                    </a>
+                                                    <span class="pattern_thumb" *ngIf="!item.media[0] || !item.media[0].original"><i class="far fa-image"></i></span>
+                                                    {{item.code}}
+                                                </td>
                                                 <td>{{item.barcode}}</td>
                                                 <td>{{item.price}}</td>
                                                 <td>{{item.special_price}}</td>

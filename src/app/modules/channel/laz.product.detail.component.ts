@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Router, ActivatedRoute} from '@angular/router';
+import {rootUrl} from '../../app.config';
 
 @Component({
     selector: 'app-channel',
@@ -18,6 +19,7 @@ export class LazProductDetailComponent implements OnInit {
         {label: 'Sản phẩm Lazada', lazurl: '/channel/laz-products/'},
         {label: 'Chi tiết sản phẩm', lazurl: ''}
     ];
+    public rootUrl = rootUrl;
 
     constructor(public channelService: ChannelService, private route: ActivatedRoute, private router: Router) {
         this.route.params.subscribe(params => {
