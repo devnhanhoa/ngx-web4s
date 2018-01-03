@@ -11,7 +11,7 @@
     line-height: 13px;
 }
 .breadcrumbs .breadcrumb li a {
-    color: #fff;
+    color: #000;
 }
 .breadcrumbs .breadcrumb li + li:before {
     top: 1px;
