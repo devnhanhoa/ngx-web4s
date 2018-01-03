@@ -9,18 +9,37 @@
         </div>
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
-                <li class="grey">
-                    <a target="_blank" href="{{rootUrl}}">
-                        <i class="glyphicon glyphicon-home"></i>
-                    </a>
-                </li>
+                <!--<li class="grey">-->
+                    <!--<a target="_blank" href="{{rootUrl}}">-->
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li class="grey" tooltip="Tìm chức năng" placement="bottom">
                     <a class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-search"></i></a>
                 </li>
+                <li class="green" tooltip="Tin nhắn" placement="bottom">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i
+                            class="ace-icon fa fa-envelope-o icon-animated-vertical"></i> </a>
+                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header"><i class="ace-icon fa fa-envelope-o"></i> Tin nhắn</li>
+                        <li class="dropdown-content ace-scroll" style="position: relative;">
+                            <div class="scroll-track" style="display: none;">
+                                <div class="scroll-bar"></div>
+                            </div>
+                            <div class="scroll-content" style="max-height: 200px;">
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li><span class="center"> Chưa có tin nhắn mới </span></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown-footer"><a href="#"> Xem tất cả tin nhắn <i
+                                class="ace-icon fa fa-arrow-right"></i> </a></li>
+                    </ul>
+                </li>
                 <li class="purple" tooltip="Thông báo" placement="bottom">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                        <i class="ace-icon fa fa-bell-o icon-animated-bell"></i>
                     </a>
                     <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header"><i class="ace-icon fa fa-bell icon-animated-bell"></i> Thông báo hệ
@@ -44,30 +63,11 @@
                                 class="ace-icon fa fa-arrow-right"></i> </a></li>
                     </ul>
                 </li>
-                <li class="green" tooltip="Tin nhắn" placement="bottom"><a data-toggle="dropdown"
-                                                                           class="dropdown-toggle" href="#"> <i
-                        class="ace-icon fa fa-envelope icon-animated-vertical"></i> </a>
-                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="ace-icon fa fa-envelope-o"></i> Tin nhắn</li>
-                        <li class="dropdown-content ace-scroll" style="position: relative;">
-                            <div class="scroll-track" style="display: none;">
-                                <div class="scroll-bar"></div>
-                            </div>
-                            <div class="scroll-content" style="max-height: 200px;">
-                                <ul class="dropdown-menu dropdown-navbar">
-                                    <li><span class="center"> Chưa có tin nhắn mới </span></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown-footer"><a href="#"> Xem tất cả tin nhắn <i
-                                class="ace-icon fa fa-arrow-right"></i> </a></li>
-                    </ul>
-                </li>
                 <li class="grey">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="{{rootUrl}}/{{profile.url_img}}"/>
-                        <span *ngIf="profile&&profile.full_name!==''" class="user-info"> {{profile.full_name}} </span>
-                        <i class="ace-icon fa fa-caret-down"></i>
+                        <div class="nav-user-photo"><img src="{{rootUrl}}/{{profile.url_img}}"/></div>
+                        <!--<span *ngIf="profile&&profile.full_name!==''" class="user-info"> {{profile.full_name}} </span>-->
+                        <!--<i class="ace-icon fa fa-caret-down"></i>-->
                     </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
