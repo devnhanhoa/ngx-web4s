@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
     public select = {Module: {id: ''}};
     private uri: string;
     public notify = [];
-
     constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
         this.getSidebar();
@@ -62,7 +61,6 @@ export class SidebarComponent implements OnInit {
             }
         });
     }
-
     public selectItem(item) {
         this.select = item;
     }

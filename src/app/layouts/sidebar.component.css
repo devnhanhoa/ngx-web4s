@@ -1,45 +1,341 @@
-.sidebar {
-    width: 190px;
-    float: left;
-    position: static;
-    padding-left: 0;
-    padding-right: 0;
+/*.sidebar {*/
+    /*width: 190px;*/
+    /*float: left;*/
+    /*position: static;*/
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
+/*}*/
+
+/*.nav-list > li {*/
+    /*display: block;*/
+    /*position: relative;*/
+    /*float: none;*/
+    /*padding: 0;*/
+    /*border-style: solid;*/
+    /*border-width: 1px 0 0;*/
+/*}*/
+
+/*.nav-list > li > a > .menu-icon {*/
+    /*display: inline-block;*/
+    /*min-width: 22px;*/
+    /*margin-right: 0;*/
+    /*text-align: center;*/
+    /*font-size: 14px;*/
+    /*font-weight: 400;*/
+    /*vertical-align: top;*/
+/*}*/
+
+/*.nav-list > li:last-child {*/
+    /*border-bottom-width: 1px;*/
+/*}*/
+
+/*.sidebar .sidebar-toggle:before {*/
+    /*display: block;*/
+    /*height: 0;*/
+    /*border-top: 1px solid;*/
+    /*border-color: inherit;*/
+    /*position: absolute;*/
+    /*left: 15px;*/
+    /*right: 15px;*/
+    /*top: 13px;*/
+/*}*/
+
+/*.nav-list li.active > a:after, .nav-list > li:before, .nav-list > li > .submenu:before, .nav-list > li > .submenu > li:before, .sidebar .sidebar-toggle:before, .sidebar.menu-min .nav-list > li > .submenu:after, .sidebar:before, li.divider:before {*/
+    /*content: "";*/
+/*}*/
+
+
+.navbar {
+    padding: 15px 10px;
+    background: #263238;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.nav-list > li {
-    display: block;
-    position: relative;
-    float: none;
-    padding: 0;
-    border-style: solid;
-    border-width: 1px 0 0;
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
 }
 
-.nav-list > li > a > .menu-icon {
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+i, span {
     display: inline-block;
-    min-width: 22px;
-    margin-right: 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.ng-sidebar[_ngcontent-c6] {
+    z-index: 0 !important;
+}
+#sidebar {
+    min-width: 190px;
+    max-width: 190px;
+    background: #263238;
+    color: #fff;
+    transition: all 0.3s;
+    position: fixed;
+    z-index: 1050;
+    font-size: 12px;
+    border: none;
+    overflow-y: auto;
+    height: 100%;
+}
+
+#sidebar::-webkit-scrollbar {
+    background-color: #f5f5f5;
+    width:5px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #999;
+}
+
+aside.ng-sidebar--closed {
+    min-width: 80px;
+    max-width: 80px;
     text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-    vertical-align: top;
 }
 
-.nav-list > li:last-child {
-    border-bottom-width: 1px;
+#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+    display: none;
 }
 
-.sidebar .sidebar-toggle:before {
+#sidebar.active .sidebar-header strong {
     display: block;
-    height: 0;
-    border-top: 1px solid;
-    border-color: inherit;
-    position: absolute;
-    left: 15px;
-    right: 15px;
-    top: 13px;
 }
 
-.nav-list li.active > a:after, .nav-list > li:before, .nav-list > li > .submenu:before, .nav-list > li > .submenu > li:before, .sidebar .sidebar-toggle:before, .sidebar.menu-min .nav-list > li > .submenu:after, .sidebar:before, li.divider:before {
-    content: "";
+#sidebar ul {
+    padding-bottom: 20px;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right:  0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: #999;
+}
+
+#sidebar ul li a:hover i {
+    color: #fff;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li a:focus,
+#sidebar ul li a:visited{
+    background: #000 !important;
+    color: #fff !important;
+}
+
+#sidebar ul li a:focus,
+#sidebar ul li a:visited{
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover span.menu-text,
+#sidebar ul li a:focus span.menu-text{
+    color: #fff;
+}
+
+#sidebar ul li a span.menu-text {
+    color: #999;
+    font-weight: 400;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+
+#sidebar ul.components {
+    /*border-bottom: 1px solid #47748b;*/
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #000;
+}
+
+#sidebar ul li.active > a span {
+    color: #fff;
+}
+
+#sidebarCollapse {
+    z-index: 1000;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+
+.asidebar {
+    display: none;
+}
+
+.active .asidebar{
+    display:block;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important ;
+    }
+    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+        top: auto;
+        bottom: 5px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+
+    #sidebar .sidebar-header h3, #sidebar .CTAs {
+        display: none;
+    }
+
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+
+    #sidebar ul li a {
+        padding: 20px 10px;
+    }
+
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right:  0;
+        display: block;
+    }
+
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
 }
