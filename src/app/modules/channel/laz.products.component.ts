@@ -6,6 +6,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 
 import {ProductsComponent} from './modal/products.component';
+import {SyncAlertComponent} from './modal/sync.alert.component';
+
 import {arrPageSize} from '../../lib/const';
 import {rootUrl} from '../../app.config';
 
@@ -34,6 +36,7 @@ export class LazProductsComponent implements OnInit {
         {label: 'Sản phẩm Lazada', lazurl: '/channel/laz-products'}
     ];
     public rootUrl = rootUrl;
+
     constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
     }
@@ -70,7 +73,12 @@ export class LazProductsComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.syncLazProduct().subscribe(
             data => {
-                this.getLazProduct();
+                this.channelService.http.endLoad();
+                this.bsModalRef = this.modalService.show(SyncAlertComponent, Object.assign({}, this.config, {class: 'gray'}));
+                this.bsModalRef.content.title = 'Kết quả đồng bộ';
+                this.subs = this.modalService.onHide.subscribe((reason: string) => {
+                    this.getLazProduct();
+                });
             },
             error => {
                 this.getLazProduct();

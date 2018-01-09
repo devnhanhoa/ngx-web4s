@@ -13,6 +13,7 @@ import {ProductsService} from '../../service/products.service';
 import {LazOrdersComponent} from './laz.orders.component';
 import {LazProductsComponent} from './laz.products.component';
 import {ProductsComponent} from './modal/products.component';
+import {SyncAlertComponent} from './modal/sync.alert.component';
 import {LazProductDetailComponent} from './laz.product.detail.component';
 import {LazOrderDetailComponent} from './laz.order.detail.component';
 
@@ -26,12 +27,14 @@ import {LazOrderDetailComponent} from './laz.order.detail.component';
         LazProductsComponent,
         LazProductDetailComponent,
         LazOrderDetailComponent,
-        ProductsComponent
+        ProductsComponent,
+        SyncAlertComponent
     ],
     exports: [],
     providers: [ChannelService, ProductsService],
     entryComponents: [
-        ProductsComponent
+        ProductsComponent,
+        SyncAlertComponent
     ]
 })
 export class ChannelModule {
