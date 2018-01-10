@@ -74,12 +74,7 @@ export class LazProductsComponent implements OnInit {
         this.subs = this.channelService.syncLazProduct().subscribe(
             data => {
                 this.channelService.http.endLoad();
-                this.bsModalRef = this.modalService.show(SyncAlertComponent, Object.assign({}, this.config, {class: 'gray'}));
-                this.bsModalRef.content.title = 'Kết quả đồng bộ';
-                this.bsModalRef.content.data = data.data;
-                this.subs = this.modalService.onHide.subscribe((reason: string) => {
-                    this.getLazProduct();
-                });
+                this.showRes(data.data);
             },
             error => {
                 this.getLazProduct();
@@ -92,8 +87,17 @@ export class LazProductsComponent implements OnInit {
         this.bsModalRef.content.title = 'Chọn sản phẩm đồng bộ';
         this.subs = this.modalService.onHide.subscribe((reason: string) => {
             if (this.bsModalRef.content.action === 'sync') {
-                this.getLazProduct();
+                this.showRes(this.bsModalRef.content.arrRes);
             }
+        });
+    }
+
+    private showRes(data = []) {
+        this.bsModalRef = this.modalService.show(SyncAlertComponent, Object.assign({}, this.config, {class: 'gray'}));
+        this.bsModalRef.content.title = 'Kết quả đồng bộ';
+        this.bsModalRef.content.data = data;
+        this.subs = this.modalService.onHide.subscribe((reason: string) => {
+            this.getLazProduct();
         });
     }
 

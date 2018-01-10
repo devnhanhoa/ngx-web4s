@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class ProductsComponent implements OnInit {
     action = 'back';
+    arrRes: Array<any> = [];
     title: string;
     private subs: Subscription;
     public products: Array<any> = [];
@@ -70,6 +71,7 @@ export class ProductsComponent implements OnInit {
         this.subs = this.productsService.syncProducts(this.selproductsid.join(',')).subscribe(
             data => {
                 this.action = 'sync';
+                this.arrRes = data.data;
                 this.loading = false;
                 this.bsModalRef.hide();
             },

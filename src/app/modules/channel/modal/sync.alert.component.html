@@ -5,7 +5,7 @@
     </button>
 </div>
 <div class="modal-body">
-    <table class="table table-bordered">
+    <table *ngIf="data" class="table table-bordered">
         <tbody>
         <ng-container *ngFor="let item of data; let i = index">
             <tr class="{{item.ERROR?'alert-warning':'alert-success'}}">
