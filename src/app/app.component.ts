@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {location} from './app.config';
+import {Subscription} from 'rxjs/Subscription';
+import {location, rootUrl} from './app.config';
 
 import {AppService} from './service/app.service';
 
@@ -10,9 +11,25 @@ import {AppService} from './service/app.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    private subs: Subscription;
 
     constructor(private translate: TranslateService, public appService: AppService) {
         translate.addLangs([location]);
         translate.use(location);
+        this.getSysSetting();
+    }
+
+    private getSysSetting() {
+        this.subs = this.appService.getSysSetting().subscribe(
+            data => {
+                this.appService.http.syssetting = data.data;
+                this.setting();
+            }
+        );
+    }
+
+    private setting() {
+        const href = rootUrl + '/' + this.appService.http.syssetting.favicon;
+        (<HTMLInputElement>document.querySelector(`link[rel*='icon']`)).setAttribute('href', href);
     }
 }

@@ -9,6 +9,7 @@ import {Auth} from './auth';
 
 @Injectable()
 export class HttpX extends Http {
+    public syssetting = {favicon: 'favicon.ico'};
     public loading = {show: false, fade: false, title: '', prog: 0};
     public alertsys = [];
     private initParams = {

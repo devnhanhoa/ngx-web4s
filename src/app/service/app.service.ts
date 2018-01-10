@@ -28,4 +28,14 @@ export class AppService {
         const params: URLSearchParams = new URLSearchParams();
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
+
+    /**
+     *
+     * @returns {Observable<any>}
+     */
+    public getSysSetting() {
+        const url = apiUrl + 'system/setting';
+        const params: URLSearchParams = new URLSearchParams();
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
 }
