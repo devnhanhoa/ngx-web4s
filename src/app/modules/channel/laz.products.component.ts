@@ -76,6 +76,7 @@ export class LazProductsComponent implements OnInit {
                 this.channelService.http.endLoad();
                 this.bsModalRef = this.modalService.show(SyncAlertComponent, Object.assign({}, this.config, {class: 'gray'}));
                 this.bsModalRef.content.title = 'Kết quả đồng bộ';
+                this.bsModalRef.content.data = data.data;
                 this.subs = this.modalService.onHide.subscribe((reason: string) => {
                     this.getLazProduct();
                 });

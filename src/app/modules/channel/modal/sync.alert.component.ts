@@ -8,11 +8,11 @@ import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class SyncAlertComponent implements OnInit {
     title: string;
+    data: Array<any> = [];
 
     constructor(public bsModalRef: BsModalRef) {
     }
 
     ngOnInit() {
-
     }
 }

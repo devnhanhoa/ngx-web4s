@@ -5,7 +5,23 @@
     </button>
 </div>
 <div class="modal-body">
-    RES
+    <table class="table table-bordered">
+        <tbody>
+        <ng-container *ngFor="let item of data; let i = index">
+            <tr class="{{item.ERROR?'alert-warning':'alert-success'}}">
+                <td class="text-center">{{i+1}}</td>
+                <td class="text-left">
+                    <i *ngIf="item.ERROR" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <i *ngIf="!item.ERROR"  class="fa fa-check-circle" aria-hidden="true"></i>
+                    {{item.product}}
+                </td>
+                <td class="text-left">
+                    {{item.message}}
+                </td>
+            </tr>
+        </ng-container>
+        </tbody>
+    </table>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">OK</button>
