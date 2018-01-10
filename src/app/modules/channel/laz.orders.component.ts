@@ -1,7 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
+
+import {SyncAlertComponent} from './modal/sync.alert.component';
 
 import {arrPageSize} from '../../lib/const';
 
@@ -13,6 +17,7 @@ import {arrPageSize} from '../../lib/const';
 
 export class LazOrdersComponent implements OnInit {
     @ViewChild('form') form: any;
+    public bsModalRef: BsModalRef;
     private subs: Subscription;
     public orders: Array<any> = [];
     public maxSize = 5;
@@ -22,8 +27,14 @@ export class LazOrdersComponent implements OnInit {
         {label: 'Đơn hàng', lazurl: ''},
         {label: 'Đơn hàng Lazada', lazurl: '/channel/laz-orders/'}
     ];
+    public config = {
+        animated: true,
+        keyboard: true,
+        backdrop: true,
+        ignoreBackdropClick: false
+    };
 
-    constructor(public channelService: ChannelService, private router: Router) {
+    constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
     }
 
@@ -59,12 +70,21 @@ export class LazOrdersComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.syncLazOrder().subscribe(
             data => {
-                this.getLazOrders();
+                this.showRes(data.data);
             },
             error => {
                 this.channelService.http.endLoad();
             }
         );
+    }
+
+    private showRes(data = []) {
+        this.bsModalRef = this.modalService.show(SyncAlertComponent, Object.assign({}, this.config, {class: 'gray'}));
+        this.bsModalRef.content.title = 'Kết quả đồng bộ';
+        this.bsModalRef.content.data = data;
+        this.subs = this.modalService.onHide.subscribe((reason: string) => {
+            this.getLazOrders();
+        });
     }
 
     public pageChanged(event: any): void {
