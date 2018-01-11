@@ -25,10 +25,6 @@ b, strong {
     vertical-align: text-bottom;
 }
 
-img {
-    max-width: 100%;
-}
-
 .no-skin .main-content {
     margin-left: 190px;
     padding: 0;
@@ -184,6 +180,14 @@ img {
 .dropdown-toggle .badge {
     right: 26px;
     top: 10px;
+}
+
+.menu-min .submenu {
+    display: none !important;
+}
+
+.menu-min .badge {
+    display: none;
 }
 
 /* Reponsive*/

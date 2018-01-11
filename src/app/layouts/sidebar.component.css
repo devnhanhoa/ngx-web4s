@@ -134,6 +134,30 @@
     position: relative;
 }
 
+.sidebar-toggle .ace-icon:hover {
+    background-color: #1b2327;
+}
+
+.menu-min {
+    width: 43px;
+}
+
+.menu-min .text-logo,
+.sidebar.menu-min .nav-list > li > a > .menu-text,
+.sidebar.menu-min .nav-list > li > a .arrow {
+    display: none;
+}
+
+.sidebar.menu-min .nav-list > li > a > .menu-icon {
+    font-size: 18px;
+    height: auto;
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: sub;
+    margin-right: 0;
+    width: auto;
+}
+
 /* Reponsive*/
 @media only screen and (min-width: 992px) {
     .sidebar-toggle {
