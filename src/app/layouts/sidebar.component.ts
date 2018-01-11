@@ -64,7 +64,7 @@ export class SidebarComponent implements OnInit {
     }
 
     public selectItem(item) {
-        this.select = item;
+        this.select = (this.select === item ? null : item);
     }
 
     public minMenu() {
