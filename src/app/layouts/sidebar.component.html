@@ -1,33 +1,30 @@
-
-        <nav id="sidebar" class="sidebar-fixed sidebar responsive sidebar-scroll display">
-            <div class="nav-wrap-up pos-rel">
-                <ul appNotify [notify]="notify" class="nav nav-list group-left list-unstyled components">
-                    <li *ngFor="let menu of menuRoot" class="sidebar-left"
-                        data-id="{{menu.Module.id}}"
-                        [ngClass]="(menu.Module.id === select.Module.id)? 'open': ''" (click)="selectItem(menu)">
-                        <a href="javascript: void(0)" class="dropdown-toggle">
-                            <i class="{{menu.Module.class_i}}"></i>
-                            <span class="menu-text"> {{menu.Module.alias}} </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <!--<span class="badge badge-important"></span>-->
-                        <app-layouts-sidebar-submenu [menu]="menu" [allmenu]="allMenu"
-                                                     [show]="(select.Module.id===menu.Module.id)"></app-layouts-sidebar-submenu>
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebar-toggle sidebar-collapse" style="z-index: 1;">
-                <i class="ace-icon miniature-menu fa fa-angle-double-left "></i>
-            </div>
-        </nav>
-
-
-
-
-
-
-
-
-
-
-
+<div id="sidebar" class="sidebar-fixed sidebar responsive sidebar-scroll">
+    <div class="logo-home">
+        <div class="left-logo">
+            <a href="http://dev.webaz.com.vn:82/admin" class="">
+                <img class="align-text-bottom" style="height: 26px"
+                     src="http://dev.webaz.com.vn:82/admin/img/logo-home.png">
+                <span class="text-logo cl-w pl-5 fs-16"><strong style="font-size: 18px">Admin</strong>Webaz</span>
+            </a>
+        </div>
+    </div>
+    <div class="nav-wrap-up pos-rel">
+        <ul appNotify [notify]="notify" class="nav nav-list group-left list-unstyled components">
+            <li *ngFor="let menu of menuRoot" class="sidebar-left"
+                data-id="{{menu.Module.id}}"
+                [ngClass]="(menu.Module.id === select.Module.id)? 'open': ''" (click)="selectItem(menu)">
+                <a href="javascript: void(0)" class="dropdown-toggle">
+                    <i class="{{menu.Module.class_i}}"></i>
+                    <span class="menu-text"> {{menu.Module.alias}} </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                    <span class="badge badge-important"></span>
+                </a>
+                <app-layouts-sidebar-submenu [menu]="menu" [allmenu]="allMenu"
+                                             [show]="(select.Module.id===menu.Module.id)"></app-layouts-sidebar-submenu>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-toggle sidebar-collapse" style="z-index: 1;">
+        <i class="ace-icon miniature-menu fa fa-angle-double-left"></i>
+    </div>
+</div>

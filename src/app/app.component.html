@@ -1,15 +1,14 @@
 <div id="app" style="height:100%">
     <div id="wrapper" style="height:100%">
-        <app-layouts-header></app-layouts-header>
+        <app-layouts-sidebar></app-layouts-sidebar>
         <div class="main-container">
-            <app-layouts-sidebar></app-layouts-sidebar>
+            <app-layouts-header></app-layouts-header>
             <div class="main-content">
                 <app-public-notification></app-public-notification>
-
                 <router-outlet></router-outlet>
             </div>
+            <app-layouts-footer></app-layouts-footer>
         </div>
-        <app-layouts-footer></app-layouts-footer>
     </div>
 </div>
 <div *ngIf="appService.http.loading.show">

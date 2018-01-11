@@ -1,119 +1,38 @@
 html, body {
     height: 100%;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=vietnamese');
-html, body {
-    font-family: Roboto;
-    font-size: 13px;
+
+a {
+    text-decoration: none !important;
 }
-a:hover {
-    text-decoration: none;
+
+b, strong {
+    font-weight: 700;
+}
+
+.cl-w {
+    color: #fff;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.align-text-bottom {
+    vertical-align: text-bottom;
 }
 
 img {
     max-width: 100%;
 }
 
-.no-skin .sidebar {
-    border-style: solid;
-    border-color: #ccc;
-    /*border-width: 0 1px 0 0;*/
-    /*-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);*/
-    /*box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);*/
-    min-height: 100%;
-}
-
-.no-skin .nav-list > li.open > a {
-    background-color: #000;
-    color: #fff;
-}
-
-.no-skin .nav-list > li.open > a span.menu-text {
-    color: #fff !important;
-}
-
-.no-skin .nav-list > li {
-    border-color: #dedede;
-}
-
-.no-skin .nav-list > li > a {
-    display: block;
-    height: 39px;
-    line-height: 17px;
-    padding-left: 7px;
-    text-shadow: none !important;
-    font-size: 13px;
-    color: #999;
-}
-
-.no-skin .nav-list > li:hover > a{
-    background-color: #000;
-    color: #fff;
-}
-
-
 .no-skin .main-content {
     margin-left: 190px;
-}
-
-.main-content {
-    margin-left: 0;
     padding: 0;
     position: relative;
-}
-
-.no-skin .sidebar-scroll .sidebar-toggle {
-    /*border-top-color: #ddd;*/
-}
-
-.no-skin .sidebar-toggle {
-    /*background-color: #edf0f5;*/
-    /*border-color: #dedede;*/
-}
-
-.sidebar-scroll .sidebar-toggle {
-    border-bottom: 1px solid;
-}
-
-.sidebar .sidebar-toggle {
-    text-align: center;
-    position: relative;
-    border-color: #39474e;
-    padding-bottom: 4px;
-}
-
-.sidebar .sidebar-toggle:before {
-    border-top: 1px solid #39474e;
-    width: 90%;
-    content: '';
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-    top: 15px;
-}
-
-.no-skin .sidebar-toggle > .ace-icon {
-    border-color: #39474e;
-    color: #999;
-    background-color: transparent;
-}
-
-.sidebar .sidebar-toggle > .ace-icon {
-    padding: 0 5px;
-    line-height: 18px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 0;
-    border: 1px solid #39474e;
-    position: relative;
-    z-index: 20;
-    background: #263238;
-}
-
-.main-content .breadcrumbs {
-    position: fixed;
-    z-index: 1031;
-    top: 0;
 }
 
 .breadcrumbs {
@@ -159,10 +78,6 @@ img {
     line-height: 20px;
 }
 
-/*.breadcrumb > li > a {*/
-    /*color: #fff;*/
-/*}*/
-
 .breadcrumb, .breadcrumb > li > a, .btn {
     display: inline-block;
 }
@@ -190,48 +105,6 @@ img {
 .form-control {
     border-radius: 0;
     box-shadow: none;
-}
-
-.badge {
-    font-size: 7px !important;
-    height: 15px;
-    width: 15px;
-    border-radius: 50% !important;
-    line-height: 16px;
-    text-align: center;
-    top: 10px !important;
-    padding: 0;
-    background-color: #e74c3c;
-}
-
-.sidebar-scroll .nav-list > li:first-child {
-    border-top-width: 0;
-}
-
-.nav-list .arrow {
-    display: block;
-    width: 14px !important;
-    height: 14px;
-    line-height: 10px;
-    text-shadow: none;
-    font-size: 14px;
-    position: absolute;
-    right: 8px;
-    top: 12px;
-    padding: 0;
-    text-align: center;
-}
-
-.badge, .nav-list a.dropdown-toggle .label {
-    right: 26px;
-}
-
-.badge, .nav-list a .label {
-    position: absolute;
-    top: 9px;
-    right: 10px;
-    opacity: .88;
-    font-size: 12px;
 }
 
 .tooltip-inner {
@@ -271,7 +144,7 @@ img {
     z-index: 999;
     margin: auto;
     display: inline-flex;
-    background-color: rgba(229,229,229, 0.85);
+    background-color: rgba(229, 229, 229, 0.85);
 }
 
 .data-loading span {
@@ -290,4 +163,30 @@ img {
 
 .data-info {
     cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    right: 10px;
+    opacity: .88;
+    font-weight: 100;
+    font-size: 7px !important;
+    height: 15px;
+    width: 15px;
+    border-radius: 50% !important;
+    line-height: 16px;
+    text-align: center;
+    top: 6px;
+    padding: 0;
+    background-color: #e74c3c;
+}
+
+.dropdown-toggle .badge {
+    right: 26px;
+    top: 10px;
+}
+
+/* Reponsive*/
+@media only screen and (min-width: 992px) {
+
 }
