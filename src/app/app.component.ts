@@ -17,6 +17,12 @@ export class AppComponent {
         translate.addLangs([location]);
         translate.use(location);
         this.getSysSetting();
+        if (document.getElementById('to-top-button') !== null) {
+            document.getElementById('to-top-button').addEventListener('click', () => {
+                setTimeout(() => window.scrollTo(0, 0), 1);
+                console.log('click');
+            });
+        }
     }
 
     private getSysSetting() {
