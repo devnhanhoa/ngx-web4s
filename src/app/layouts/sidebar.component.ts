@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
     public select = {Module: {id: ''}};
     private uri: string;
     public notify = [];
-    public min = false;
 
     constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
@@ -69,6 +68,6 @@ export class SidebarComponent implements OnInit {
     }
 
     public minMenu() {
-        this.min = !this.min;
+        this.appService.minPreview = !this.appService.minPreview;
     }
 }

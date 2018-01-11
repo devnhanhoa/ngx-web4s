@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar-fixed sidebar responsive sidebar-scroll {{min?'menu-min':''}}">
+<div id="sidebar" class="sidebar-fixed sidebar responsive sidebar-scroll {{appService.minPreview?'menu-min':''}}">
     <div class="logo-home">
         <div class="left-logo">
             <a href="http://dev.webaz.com.vn:82/admin" class="">
@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div class="sidebar-toggle sidebar-collapse" style="z-index: 1;">
-        <i class="ace-icon miniature-menu fa {{min?'fa-angle-double-right':'fa-angle-double-left'}}"
+        <i class="ace-icon miniature-menu fa {{appService.minPreview?'fa-angle-double-right':'fa-angle-double-left'}}"
            (click)="minMenu()"></i>
     </div>
 </div>

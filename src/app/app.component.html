@@ -1,13 +1,13 @@
-<div id="app" style="height:100%">
-    <div id="wrapper" style="height:100%">
-        <app-layouts-sidebar></app-layouts-sidebar>
+<div id="app">
+    <div id="wrapper">
         <div class="main-container">
-            <app-layouts-header></app-layouts-header>
-            <div class="main-content">
+            <app-layouts-sidebar></app-layouts-sidebar>
+            <div class="main-content {{appService.minPreview?'min-main-content':''}}">
+                <app-layouts-header></app-layouts-header>
                 <app-public-notification></app-public-notification>
                 <router-outlet></router-outlet>
+                <app-layouts-footer></app-layouts-footer>
             </div>
-            <app-layouts-footer></app-layouts-footer>
         </div>
     </div>
 </div>

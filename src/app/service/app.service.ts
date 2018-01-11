@@ -5,6 +5,8 @@ import {apiUrl} from '../app.config';
 
 @Injectable()
 export class AppService {
+    public minPreview = false;
+
     constructor(public http: HttpX) {
 
     }
