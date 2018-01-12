@@ -8,9 +8,13 @@ import {AppService} from '../../service/app.service';
 })
 export class NotificationComponent implements OnInit {
 
-  constructor(public appService: AppService) { }
+  constructor(public appService: AppService) {
+  }
 
   ngOnInit() {
+  }
+  reload() {
+    window.location.reload();
   }
 
 }
