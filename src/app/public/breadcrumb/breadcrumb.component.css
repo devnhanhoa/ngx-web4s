@@ -2,15 +2,20 @@
 
 }
 .breadcrumbs .breadcrumb {
-    margin: 10px 0 0 0;
+    margin: 25px 0 0 0;
     line-height: 15px;
 }
 .breadcrumbs .breadcrumb .home-icon {
     line-height: 13px;
 }
 .breadcrumbs .breadcrumb li a {
-    color: #000;
+    color: #62a8ea;
 }
 .breadcrumbs .breadcrumb li + li:before {
     top: 1px;
+}
+
+.title-breadcrumbs {
+    margin-top: 19px;
+    font-size: 18px;
 }

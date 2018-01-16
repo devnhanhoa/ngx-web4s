@@ -1,3 +1,7 @@
 .table-bordered {
     margin-top: 15px;
 }
+
+.btn-default {
+    font-size: 13px;
+}

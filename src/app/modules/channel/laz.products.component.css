@@ -12,3 +12,13 @@
     font-size: 25px;
     vertical-align: middle;
 }
+
+.btn-primary {
+    background: #428bca;
+    border-color: #428bca;
+    border-radius: 0;
+}
+.btn-primary:hover {
+    background: #1b6aaa;
+    transition: all 0.4s;
+}
