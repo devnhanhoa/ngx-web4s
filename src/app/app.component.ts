@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs/Subscription';
 import {location, rootUrl} from './app.config';
@@ -8,20 +8,35 @@ import {AppService} from './service/app.service';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    host: {
+        '(window:scroll)': 'updateScrollBtn($event)'
+    }
 })
 export class AppComponent {
     private subs: Subscription;
-
+    isScrolled = false;
+    currPos: Number = 0;
+    startPos: Number = 0;
+    changePos: Number = 200;
     constructor(private translate: TranslateService, public appService: AppService) {
         translate.addLangs([location]);
         translate.use(location);
         this.getSysSetting();
-        if (document.getElementById('to-top-button') !== null) {
-            document.getElementById('to-top-button').addEventListener('click', () => {
-                setTimeout(() => window.scrollTo(0, 0), 1);
-                console.log('click');
-            });
+
+        setTimeout(() => {
+           if (document.getElementById('to-top-button') !== null) {
+               document.getElementById('to-top-button').addEventListener('click', () => {
+                   window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+               });
+           } }, 1);
+    }
+    updateScrollBtn(evt) {
+        this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
+        if (this.currPos >= this.changePos) {
+            this.isScrolled = true;
+        } else {
+            this.isScrolled = false;
         }
     }
 
