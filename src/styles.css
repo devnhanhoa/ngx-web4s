@@ -101,6 +101,20 @@ b, strong {
     box-shadow: none;
 }
 
+.filter-laz {
+    background: #ccd5db;
+}
+
+.filter-laz .form-group {
+    margin-bottom: 0;
+}
+
+.filter-laz .btn-success {
+    border-radius: 0;
+    background-color: #87b87f;
+    border-color: #87b87f;
+}
+
 .tooltip-inner {
     max-width: none;
 }
@@ -158,7 +172,7 @@ b, strong {
     background-color: #ffc;
 }
 
-.table>thead>tr {
+.table>thead {
     color: #707070;
     font-weight: 400;
     background: repeat-x #F2F2F2;
