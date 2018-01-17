@@ -12,8 +12,8 @@ import {rootUri} from '../app.config';
 
 export class SidebarComponent implements OnInit {
     private subs: Subscription;
-    public menuRoot = [];
     public allMenu = [];
+    private group = '';
     public select = {Module: {id: ''}};
     private uri: string;
     public notify = [];
@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
         this.subs = this.appService.getSidebar().subscribe(
             data => {
                 this.allMenu = data.data;
-                // this.setActive();
+                this.setActive();
                 this.subs = this.notifyService.getSerNotify().subscribe(
                     res => {
                         this.notify = res.data.data;
@@ -50,17 +50,25 @@ export class SidebarComponent implements OnInit {
     }
 
     public setActive() {
-        let group = '';
-        Object.keys(this.allMenu).map((index) => {
-            if ((this.allMenu[index].Module.slug.trim() !== '') && this.uri.indexOf(this.allMenu[index].Module.slug.trim()) > -1) {
-                group = this.allMenu[index].Module.group;
+        this.checkUriActive(this.allMenu);
+        for (let index = 0; index < this.allMenu.length; index++) {
+            if (this.allMenu[index].Module.group === this.group) {
+                this.selectItem(this.allMenu[index]);
+                return true;
             }
-        });
-        Object.keys(this.menuRoot).map((index) => {
-            if (this.menuRoot[index].Module.group === group) {
-                this.selectItem(this.menuRoot[index]);
+        }
+    }
+
+    private checkUriActive(menus) {
+        for (let index = 0; index < menus.length; index++) {
+            if ((menus[index].Module.slug.trim() !== '') && this.uri.indexOf(menus[index].Module.slug.trim()) > -1) {
+                this.group = menus[index].Module.group;
+                return true;
             }
-        });
+            if (menus[index].Module.child.length > 0) {
+                this.checkUriActive(menus[index].Module.child);
+            }
+        }
     }
 
     public selectItem(item) {
