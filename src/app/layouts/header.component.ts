@@ -34,4 +34,8 @@ export class HeaderComponent {
             }
         );
     }
+
+    errorHandler(event) {
+        event.target.src = this.rootUrl + '/admin/img/avatar-default.png';
+    }
 }
