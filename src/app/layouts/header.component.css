@@ -3,7 +3,7 @@
     border-width: 0;
     border-radius: 0;
     background: #ffffff;
-    padding: 10px;
+    padding: 10px 24px;
     width: 100%;
     position: relative;
     box-shadow: rgba(58,78,95,0.2) 0 1px 16px, rgba(58,78,95,0.05) 0 -2px 16px;
@@ -22,14 +22,21 @@
     z-index: 1030;
 }
 
-.navbar-header .logo-backend {
-    padding: 3px 12px;
-    height: auto;
+.navbar-header {
+    line-height: 28px;
+}
+
+.navbar-header a {
+    text-transform: uppercase;
+    color: #313131;
+    font-size: 14px;
 }
 
 .ace-nav {
     height: 100%;
     margin: 0!important;
+    position: relative;
+    left: 15px;
 }
 
 .ace-nav>li {
@@ -49,7 +56,7 @@
     text-align: center;
     height: 100%;
     width: auto;
-    padding: 0 8px;
+    padding: 0 10px;
     position: relative;
 }
 
