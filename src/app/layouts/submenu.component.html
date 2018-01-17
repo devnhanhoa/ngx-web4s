@@ -2,8 +2,8 @@
     [ngClass]="parent!=='0'? 'subsubmenu': ''"
     class="submenu">
     <ng-container *ngFor="let smenu of menu">
-        <li *ngIf="smenu.Module.child.length>0; else notchild" (mouseenter)="showChildren(true)"
-            (mouseleave)="showChildren(false)"
+        <li *ngIf="smenu.Module.child.length>0; else notchild" (mouseenter)="showChildren(smenu)"
+            (mouseleave)="hideChildren(smenu)"
             data-id="{{smenu.Module.id}}">
             <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
                routerLinkActive="active"
@@ -12,7 +12,8 @@
             <span class="badge badge-important"></span>
             <b class="arrow fa glyphicon glyphicon-plus"></b>
             <app-layouts-sidebar-submenu [menu]="smenu.Module.child"
-                                         [parent]="smenu.Module.id" [show]="showchil"></app-layouts-sidebar-submenu>
+                                         [parent]="smenu.Module.id"
+                                         [show]="(showchil&&(select.Module.id===smenu.Module.id))"></app-layouts-sidebar-submenu>
         </li>
 
         <ng-template #notchild>

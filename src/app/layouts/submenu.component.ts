@@ -20,11 +20,26 @@ export class SubmenuComponent {
     public show = false;
 
     public showchil = false;
+    public select = {Module: {id: ''}};
+    private unover = true;
 
     constructor() {
     }
 
-    public showChildren(val) {
-        this.showchil = val;
+    public showChildren(smenu) {
+        this.select = smenu;
+        this.showchil = true;
+        this.unover = false;
+    }
+
+    public hideChildren(smenu) {
+        this.unover = true;
+        const myjs = this;
+        setTimeout(function () {
+            if (myjs.unover && (myjs.select === smenu)) {
+                myjs.select = {Module: {id: ''}};
+                myjs.showchil = false;
+            }
+        }, 1000);
     }
 }
