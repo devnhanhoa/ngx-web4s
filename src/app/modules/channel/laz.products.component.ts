@@ -33,7 +33,7 @@ export class LazProductsComponent implements OnInit {
     public arrPageSize = arrPageSize;
     public lazproductArray: any[] = [
         {label: 'Sản phẩm', lazurl: ''},
-        {label: 'Sản phẩm Lazada', lazurl: '/channel/laz-products'}
+        {label: 'Sản phẩm Lazada', lazurl: ''}
     ];
     public rootUrl = rootUrl;
 

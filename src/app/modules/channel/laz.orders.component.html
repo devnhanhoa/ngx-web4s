@@ -36,12 +36,11 @@
                         <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
                     </button>
                 </div>
-                <div class="col-md-6 col-xs-6 text-right">
+                <div class="col-md-6 col-xs-6 text-right pagination-laz">
                     <div>
                         <a class="text-info">
                             {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
                             paging.count:paging.page*paging.limit) +' / ' + paging.count}}
-                            Đơn hàng
                         </a>
                     </div>
                     <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"

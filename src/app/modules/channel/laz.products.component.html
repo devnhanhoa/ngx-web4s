@@ -40,12 +40,11 @@
                         <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
                     </button>
                 </div>
-                <div class="col-md-6 col-xs-6 text-right">
+                <div class="col-md-6 col-xs-6 text-right pagination-laz">
                     <div>
                         <a class="text-info">
                             {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
                             paging.count:paging.page*paging.limit) +' / ' + paging.count}}
-                            Sản phẩm
                         </a>
                     </div>
                     <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"

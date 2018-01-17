@@ -25,7 +25,7 @@ export class LazOrdersComponent implements OnInit {
     public arrPageSize = arrPageSize;
     public lazorderArray: any[] = [
         {label: 'Đơn hàng', lazurl: ''},
-        {label: 'Đơn hàng Lazada', lazurl: '/channel/laz-orders/'}
+        {label: 'Đơn hàng Lazada', lazurl: ''}
     ];
     public config = {
         animated: true,

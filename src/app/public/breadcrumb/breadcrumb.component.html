@@ -5,8 +5,8 @@
         </div>
         <div class="col-md-6">
             <ul class="breadcrumb">
-                <li><i class="ace-icon fa fa-home home-icon"></i> <a routerLink="">Trang chủ</a></li>
-                <li *ngFor="let breadcrumb of Breadcrumbs">
+                <li><a routerLink="">Trang chủ</a></li>
+                <li *ngFor="let breadcrumb of Breadcrumbs | slice:1:3">
                     <a *ngIf="breadcrumb && breadcrumb.lazurl" routerLink="{{breadcrumb.lazurl}}">{{breadcrumb.label}}</a>
                     <span *ngIf="!breadcrumb || !breadcrumb.lazurl">{{breadcrumb.label}}</span>
                 </li>
