@@ -1,17 +1,32 @@
 <ul *ngIf="menu.length" [style.display]="show ? 'block' : 'none'"
     [ngClass]="parent!=='0'? 'subsubmenu': ''"
     class="submenu">
-    <li *ngFor="let smenu of menu" (mouseleave)="showChildren(parent==='0'||false)" data-id="{{smenu.Module.id}}">
-        <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
-           routerLinkActive="active"
-           routerLink="{{smenu.Module.slug.replace(root,'')}}"
-           href="javascript: void(0)">{{smenu.Module.alias}}</a>
+    <ng-container *ngFor="let smenu of menu">
+        <li *ngIf="smenu.Module.child.length>0; else notchild" (mouseenter)="showChildren(true)"
+            (mouseleave)="showChildren(false)"
+            data-id="{{smenu.Module.id}}">
+            <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
+               routerLinkActive="active"
+               routerLink="{{smenu.Module.slug.replace(root,'')}}"
+               href="javascript: void(0)">{{smenu.Module.alias}}</a>
+            <span class="badge badge-important"></span>
+            <b class="arrow fa glyphicon glyphicon-plus"></b>
+            <app-layouts-sidebar-submenu [menu]="smenu.Module.child"
+                                         [parent]="smenu.Module.id" [show]="showchil"></app-layouts-sidebar-submenu>
+        </li>
+
+        <ng-template #notchild>
+            <li data-id="{{smenu.Module.id}}">
+                <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
+                   routerLinkActive="active"
+                   routerLink="{{smenu.Module.slug.replace(root,'')}}"
+                   href="javascript: void(0)">{{smenu.Module.alias}}</a>
+                <span class="badge badge-important"></span>
+            </li>
+        </ng-template>
+
         <ng-template #next>
             <a href="{{smenu.Module.slug}}">{{smenu.Module.alias}}</a>
         </ng-template>
-        <span class="badge badge-important"></span>
-        <b *ngIf="smenu.Module.child.length>0" class="arrow fa glyphicon glyphicon-plus"></b>
-        <app-layouts-sidebar-submenu [menu]="smenu.Module.child"
-                                     [parent]="smenu.Module.id" [show]="showchil"></app-layouts-sidebar-submenu>
-    </li>
+    </ng-container>
 </ul>
