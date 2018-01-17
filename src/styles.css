@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     line-height: 1.5;
     font-family: 'Roboto', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: #393939;
 }
 
@@ -247,6 +247,20 @@ b, strong {
 
 .menu-min .badge {
     display: none;
+}
+
+.nav-list .arrow {
+    display: block;
+    width: 14px !important;
+    height: 14px;
+    line-height: 10px;
+    text-shadow: none;
+    font-size: 14px;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    padding: 0;
+    text-align: center;
 }
 
 /* Reponsive*/

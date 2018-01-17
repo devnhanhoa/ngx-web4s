@@ -42,3 +42,10 @@
     border-right: 0;
     border-bottom: 0;
 }
+
+.subsubmenu {
+    position: absolute;
+    width: 176px;
+    left: 100%;
+    top: 0;
+}

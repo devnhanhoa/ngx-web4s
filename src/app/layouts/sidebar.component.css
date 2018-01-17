@@ -91,20 +91,6 @@
     font-weight: 400;
 }
 
-.nav-list .arrow {
-    display: block;
-    width: 14px !important;
-    height: 14px;
-    line-height: 10px;
-    text-shadow: none;
-    font-size: 14px;
-    position: absolute;
-    right: 8px;
-    top: 12px;
-    padding: 0;
-    text-align: center;
-}
-
 .sidebar-toggle:before {
     content: "";
     display: block;
@@ -140,6 +126,13 @@
 
 .menu-min {
     width: 43px;
+}
+
+.sidebar.menu-min .submenu {
+    position: absolute;
+    margin-left: 45px;
+    width: 190px;
+    top: 0;
 }
 
 .menu-min .text-logo,

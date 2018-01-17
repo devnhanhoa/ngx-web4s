@@ -17,6 +17,7 @@ export class SidebarComponent implements OnInit {
     public select = {Module: {id: ''}};
     private uri: string;
     public notify = [];
+    private unover = true;
 
     constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
@@ -36,9 +37,8 @@ export class SidebarComponent implements OnInit {
     private getSidebar() {
         this.subs = this.appService.getSidebar().subscribe(
             data => {
-                this.menuRoot = data.data.menu_root;
-                this.allMenu = data.data.all_menu;
-                this.setActive();
+                this.allMenu = data.data;
+                // this.setActive();
                 this.subs = this.notifyService.getSerNotify().subscribe(
                     res => {
                         this.notify = res.data.data;
@@ -69,5 +69,25 @@ export class SidebarComponent implements OnInit {
 
     public minMenu() {
         this.appService.minPreview = !this.appService.minPreview;
+        this.select = {Module: {id: ''}};
+    }
+
+    public onHovering(item) {
+        if (this.appService.minPreview) {
+            this.unover = false;
+            this.select = item;
+        }
+    }
+
+    public onUnovering(item) {
+        if (this.appService.minPreview) {
+            this.unover = true;
+            const myjs = this;
+            setTimeout(function () {
+                if (myjs.unover && (myjs.select === item)) {
+                    myjs.select = {Module: {id: ''}};
+                }
+            }, 1000);
+        }
     }
 }
