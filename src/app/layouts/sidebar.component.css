@@ -128,13 +128,6 @@
     width: 43px;
 }
 
-.sidebar.menu-min .submenu {
-    position: absolute;
-    margin-left: 45px;
-    width: 190px;
-    top: 0;
-}
-
 .menu-min .text-logo,
 .sidebar.menu-min .nav-list > li > a > .menu-text,
 .sidebar.menu-min .nav-list > li > a .arrow {
