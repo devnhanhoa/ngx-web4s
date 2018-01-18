@@ -6,6 +6,10 @@ html, body {
     color: #393939;
 }
 
+table {
+    font-size: 12px;
+}
+
 a {
     text-decoration: none !important;
 }
@@ -30,7 +34,7 @@ b, strong {
     margin-left: 190px;
     padding: 0;
     position: relative;
-    /*background: #f0f4f5;*/
+    background: #f0f4f5;
 }
 
 .min-main-content {
@@ -83,11 +87,12 @@ b, strong {
 }
 
 .page-header {
-    margin: 0 0 20px;
+    margin: 0;
     padding: 0;
     /*background: #CCD5DB;*/
     /*border: none;*/
     box-shadow: none;
+    font-size: 13px;
 }
 
 .panel {
@@ -99,8 +104,17 @@ b, strong {
     box-shadow: none;
 }
 
+.laz-content {
+    background: #fff;
+    padding: 20px 12px 0;
+}
+
 .filter-laz {
     background: #ccd5db;
+}
+
+.filter-laz .panel-body {
+    padding: 12px !important;
 }
 
 .filter-laz .form-group {
@@ -111,6 +125,12 @@ b, strong {
     border-radius: 0;
     background-color: #87b87f;
     border-color: #87b87f;
+}
+
+.pagination-laz .text-info {
+    color: #333 !important;
+    font-size: 12px !important;
+    line-height: 30px !important;
 }
 
 .tooltip-inner {

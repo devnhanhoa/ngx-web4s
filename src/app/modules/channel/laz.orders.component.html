@@ -28,85 +28,64 @@
                     </form>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <button type="button" (click)="orderDownload()" class="btn btn-primary btn-md"
-                            tooltip="Click để đồng bộ dữ liệu đơn hàng từ Lazada về hệ thống." placement="top">
-                        <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
-                    </button>
-                </div>
-                <div class="col-md-6 col-xs-6 text-right pagination-laz">
-                    <div>
-                        <a class="text-info">
-                            {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
-                            paging.count:paging.page*paging.limit) +' / ' + paging.count}}
-                        </a>
+            <div class="laz-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" (click)="orderDownload()" class="btn btn-primary btn-md"
+                                tooltip="Click để đồng bộ dữ liệu đơn hàng từ Lazada về hệ thống." placement="top">
+                            <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
+                        </button>
                     </div>
-                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
-                                [maxSize]="maxSize"
-                                [itemsPerPage]="channelService.search.page_size"
-                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                                (pageChanged)="pageChanged($event)"
-                                class="pagination-sm"
-                                [boundaryLinks]="true"></pagination>
-                </div>
-            </div>
+                    <div class="col-md-6 col-xs-6 text-right pagination-laz">
+                        <div>
+                            <a class="text-info">
+                                {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                                paging.count:paging.page*paging.limit) +' / ' + paging.count}}
+                            </a>
+                        </div>
 
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th class="text-center">Mã đơn hàng</th>
-                    <th class="text-center">Khách hàng</th>
-                    <th class="text-center">Sản phẩm</th>
-                    <th class="text-center">Giá</th>
-                    <th class="text-center">SL</th>
-                    <th class="text-center">Tổng tiền</th>
-                    <th class="text-center" style="max-width: 60px;">#</th>
-                </tr>
-                </thead>
-                <tbody>
-                <ng-container *ngFor="let order of orders">
-                    <ng-container *ngFor="let row of order.order_detail; let i = index">
-                        <tr *ngIf="i===0; else next">
-                            <td [attr.rowspan]="order.order_detail.length">
-                                <p><strong><i class="fa fa-qrcode" aria-hidden="true"></i> Mã: </strong>{{order.Order.code}}
-                                </p>
-                                <p><strong>Loại đơn: </strong>{{order.Order.order_flg}}</p>
-                                <p><strong>Nguồn: </strong>{{order.Order.order_line}}</p>
-                                <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> :</strong>{{order.Order.created}}
-                                </p>
-                            </td>
-                            <td [attr.rowspan]="order.order_detail.length">
-                                <p><strong><i class="fa fa-user" aria-hidden="true"></i> </strong>{{order.OrderContact.full_name}}
-                                </p>
-                                <p><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{order.OrderContact.phone}}
-                                </p>
-                                <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{order.OrderContact.address}}
-                                </p>
-                            </td>
-                            <td>
-                                <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
-                                </p>
-                                <p><strong><i class="fa fa-barcode" aria-hidden="true"></i> </strong>{{row.ProductItem.barcode}}
-                                </p>
-                            </td>
-                            <td class="text-center">
-                                <p>{{row.OrderDetail.price | number}}</p>
-                            </td>
-                            <td class="text-center">
-                                <p>{{row.OrderDetail.quantity}}</p>
-                            </td>
-                            <td [attr.rowspan]="order.order_detail.length" class="text-right">
-                                <p>{{order.Order.total}}</p>
-                            </td>
-                            <td [attr.rowspan]="order.order_detail.length" class="text-center"><a
-                                    (click)="goDetail(order.Order)"
-                                    tooltip="Click xem chi tiết" placement="top" class="data-info"><i
-                                    class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                        </tr>
-                        <ng-template #next>
-                            <tr>
+                        <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                    [maxSize]="maxSize"
+                                    [itemsPerPage]="channelService.search.page_size"
+                                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                    (pageChanged)="pageChanged($event)"
+                                    class="pagination-sm"
+                                    [boundaryLinks]="true"></pagination>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Mã đơn hàng</th>
+                        <th class="text-center">Khách hàng</th>
+                        <th class="text-center">Sản phẩm</th>
+                        <th class="text-center">Giá</th>
+                        <th class="text-center">SL</th>
+                        <th class="text-center">Tổng tiền</th>
+                        <th class="text-center" style="max-width: 60px;">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let order of orders">
+                        <ng-container *ngFor="let row of order.order_detail; let i = index">
+                            <tr *ngIf="i===0; else next">
+                                <td [attr.rowspan]="order.order_detail.length">
+                                    <p><strong><i class="fa fa-qrcode" aria-hidden="true"></i> Mã: </strong>{{order.Order.code}}
+                                    </p>
+                                    <p><strong>Loại đơn: </strong>{{order.Order.order_flg}}</p>
+                                    <p><strong>Nguồn: </strong>{{order.Order.order_line}}</p>
+                                    <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> :</strong>{{order.Order.created}}
+                                    </p>
+                                </td>
+                                <td [attr.rowspan]="order.order_detail.length">
+                                    <p><strong><i class="fa fa-user" aria-hidden="true"></i> </strong>{{order.OrderContact.full_name}}
+                                    </p>
+                                    <p><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{order.OrderContact.phone}}
+                                    </p>
+                                    <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{order.OrderContact.address}}
+                                    </p>
+                                </td>
                                 <td>
                                     <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
                                     </p>
@@ -114,32 +93,55 @@
                                     </p>
                                 </td>
                                 <td class="text-center">
-                                    <p>{{row.OrderDetail.price}}</p>
+                                    <p>{{row.OrderDetail.price | number}}</p>
                                 </td>
                                 <td class="text-center">
                                     <p>{{row.OrderDetail.quantity}}</p>
                                 </td>
+                                <td [attr.rowspan]="order.order_detail.length" class="text-right">
+                                    <p>{{order.Order.total}}</p>
+                                </td>
+                                <td [attr.rowspan]="order.order_detail.length" class="text-center"><a
+                                        (click)="goDetail(order.Order)"
+                                        tooltip="Click xem chi tiết" placement="top" class="data-info"><i
+                                        class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             </tr>
-                        </ng-template>
+                            <ng-template #next>
+                                <tr>
+                                    <td>
+                                        <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
+                                        </p>
+                                        <p><strong><i class="fa fa-barcode" aria-hidden="true"></i> </strong>{{row.ProductItem.barcode}}
+                                        </p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p>{{row.OrderDetail.price}}</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p>{{row.OrderDetail.quantity}}</p>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </ng-container>
                     </ng-container>
-                </ng-container>
-                </tbody>
-            </table>
-            <div class="row">
-                <div class="col-md-6 col-xs-6">
-                    <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
-                            (change)="pageSizeChange()"
-                            appBootstrapSelect
-                            class="selectpicker" [arroption]="arrPageSize"></select>
-                </div>
-                <div class="col-md-6 col-xs-6 text-right">
-                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
-                                [maxSize]="maxSize"
-                                [itemsPerPage]="channelService.search.page_size"
-                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                                (pageChanged)="pageChanged($event)"
-                                class="pagination-sm"
-                                [boundaryLinks]="true"></pagination>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
+                                (change)="pageSizeChange()"
+                                appBootstrapSelect
+                                class="selectpicker" [arroption]="arrPageSize"></select>
+                    </div>
+                    <div class="col-md-6 col-xs-6 text-right">
+                        <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                    [maxSize]="maxSize"
+                                    [itemsPerPage]="channelService.search.page_size"
+                                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                    (pageChanged)="pageChanged($event)"
+                                    class="pagination-sm"
+                                    [boundaryLinks]="true"></pagination>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,132 +2,133 @@
     <div class="row">
         <div class="col-sm-12">
             <app-public-breadcrumb [Breadcrumbs]="lazproductArray"></app-public-breadcrumb>
-            <div class="panel panel-default page-header filter-laz">
-                <div class="panel-body">
-                    <form novalidate (ngSubmit)="search()" #form="ngForm">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group form-input-lg">
-                                    <input title=""
-                                           [(ngModel)]="channelService.search.title"
-                                           placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
-                                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
-                                           class="form-control">
+                <div class="panel panel-default page-header filter-laz">
+                    <div class="panel-body">
+                        <form novalidate (ngSubmit)="search()" #form="ngForm">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-input-lg">
+                                        <input title=""
+                                               [(ngModel)]="channelService.search.title"
+                                               placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
+                                               tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-input-lg">
+                                        <a id="btn-search" class="btn btn-primary btn-md" (click)="search()"><i
+                                                class="ace-icon fa fa-search"></i></a>
+                                        <a id="btn-refresh-filter" class="btn btn-success btn-md" (click)="resetForm()"> <i
+                                                class="fa fa-refresh bigger-120" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group form-input-lg">
-                                    <a id="btn-search" class="btn btn-primary btn-md" (click)="search()"><i
-                                            class="ace-icon fa fa-search"></i></a>
-                                    <a id="btn-refresh-filter" class="btn btn-success btn-md" (click)="resetForm()"> <i
-                                            class="fa fa-refresh bigger-120" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md"
-                            tooltip="Click để đồng bộ dữ liệu sản phẩm từ Lazada về hệ thống." placement="top">
-                        <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
-                    </button>
-
-                    <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md"
-                            tooltip="Click để đồng bộ dữ liệu sản phẩm từ hệ thống đến Lazada." placement="top">
-                        <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
-                    </button>
-                </div>
-                <div class="col-md-6 col-xs-6 text-right pagination-laz">
-                    <div>
-                        <a class="text-info">
-                            {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
-                            paging.count:paging.page*paging.limit) +' / ' + paging.count}}
-                        </a>
+                        </form>
                     </div>
-                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
-                                [maxSize]="maxSize"
-                                [itemsPerPage]="channelService.search.page_size"
-                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                                (pageChanged)="pageChanged($event)"
-                                class="pagination-sm"
-                                [boundaryLinks]="true"></pagination>
                 </div>
-            </div>
+                <div class="laz-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md"
+                                    tooltip="Click để đồng bộ dữ liệu sản phẩm từ Lazada về hệ thống." placement="top">
+                                <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
+                            </button>
 
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th class="text-center" rowspan="2">Sản phẩm</th>
-                    <th class="text-center" colspan="4">Thuộc tính</th>
-                    <th class="text-center" style="max-width: 60px;" rowspan="2">#</th>
-                </tr>
-                <tr>
-                    <th class="text-center">Thông tin chung</th>
-                    <th class="text-center">Mã vạch</th>
-                    <th class="text-center">Giá</th>
-                    <th class="text-center">Tồn kho</th>
-                </tr>
-                </thead>
-                <tbody>
-                <ng-container *ngFor="let product of products">
-                    <ng-container *ngFor="let row of product.ProductItem; let i = index">
-                        <tr *ngIf="i===0; else next">
-                            <td [attr.rowspan]="product.ProductItem.length">
-                                <a href="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" target="_blank" *ngIf="product.ProductItem[0].media && product.ProductItem[0].media.path_original">
-                                    <img class="thumb_image" src="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" alt="">
+                            <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md"
+                                    tooltip="Click để đồng bộ dữ liệu sản phẩm từ hệ thống đến Lazada." placement="top">
+                                <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-xs-6 text-right pagination-laz">
+                            <div>
+                                <a class="text-info">
+                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                                    paging.count:paging.page*paging.limit) +' / ' + paging.count}}
                                 </a>
-                                <span class="pattern_thumb" *ngIf="!product.ProductItem[0].media || !product.ProductItem[0].media.path_original"><i class="fa fa-image"></i></span>
-                                {{product.id}}-{{product.name}}
-                            </td>
-                            <td>
-                                <b>Mã:</b> {{row.code}}
-                                <br>
-                                <span [innerHTML]="row.meta"></span>
-                            </td>
-                            <td class="text-center">{{row.barcode}}</td>
-                            <td class="text-center">{{row.price | number}}</td>
-                            <td class="text-center">{{row.inventory}}</td>
-                            <td [attr.rowspan]="product.ProductItem.length" class="text-center"><a
-                                    (click)="goDetail(product)"
-                                    tooltip="Click xem chi tiết" placement="top" class="data-info"><i
-                                    class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                            </div>
+                            <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                        [maxSize]="maxSize"
+                                        [itemsPerPage]="channelService.search.page_size"
+                                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                        (pageChanged)="pageChanged($event)"
+                                        class="pagination-sm"
+                                        [boundaryLinks]="true"></pagination>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-center" rowspan="2">Sản phẩm</th>
+                            <th class="text-center" colspan="4">Thuộc tính</th>
+                            <th class="text-center" style="max-width: 60px;" rowspan="2">#</th>
                         </tr>
-                        <ng-template #next>
-                            <tr>
-                                <td>
-                                    <b>Mã:</b> {{row.code}}
-                                    <br>
-                                    <span [innerHTML]="row.meta"></span>
-                                </td>
-                                <td class="text-center">{{row.barcode}}</td>
-                                <td class="text-center">{{row.price | number}}</td>
-                                <td class="text-center">{{row.inventory}}</td>
-                            </tr>
-                        </ng-template>
-                    </ng-container>
-                </ng-container>
-                </tbody>
-            </table>
-            <div class="row">
-                <div class="col-md-6 col-xs-6">
-                    <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
-                            (change)="pageSizeChange()"
-                            appBootstrapSelect
-                            class="selectpicker" [arroption]="arrPageSize"></select>
+                        <tr>
+                            <th class="text-center">Thông tin chung</th>
+                            <th class="text-center">Mã vạch</th>
+                            <th class="text-center">Giá</th>
+                            <th class="text-center">Tồn kho</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let product of products">
+                            <ng-container *ngFor="let row of product.ProductItem; let i = index">
+                                <tr *ngIf="i===0; else next">
+                                    <td [attr.rowspan]="product.ProductItem.length">
+                                        <a href="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" target="_blank" *ngIf="product.ProductItem[0].media && product.ProductItem[0].media.path_original">
+                                            <img class="thumb_image" src="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" alt="">
+                                        </a>
+                                        <span class="pattern_thumb" *ngIf="!product.ProductItem[0].media || !product.ProductItem[0].media.path_original"><i class="fa fa-image"></i></span>
+                                        {{product.id}}-{{product.name}}
+                                    </td>
+                                    <td>
+                                        <b>Mã:</b> {{row.code}}
+                                        <br>
+                                        <span [innerHTML]="row.meta"></span>
+                                    </td>
+                                    <td class="text-center">{{row.barcode}}</td>
+                                    <td class="text-center">{{row.price | number}}</td>
+                                    <td class="text-center">{{row.inventory}}</td>
+                                    <td [attr.rowspan]="product.ProductItem.length" class="text-center"><a
+                                            (click)="goDetail(product)"
+                                            tooltip="Click xem chi tiết" placement="top" class="data-info"><i
+                                            class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <ng-template #next>
+                                    <tr>
+                                        <td>
+                                            <b>Mã:</b> {{row.code}}
+                                            <br>
+                                            <span [innerHTML]="row.meta"></span>
+                                        </td>
+                                        <td class="text-center">{{row.barcode}}</td>
+                                        <td class="text-center">{{row.price | number}}</td>
+                                        <td class="text-center">{{row.inventory}}</td>
+                                    </tr>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
+                                    (change)="pageSizeChange()"
+                                    appBootstrapSelect
+                                    class="selectpicker" [arroption]="arrPageSize"></select>
+                        </div>
+                        <div class="col-md-6 col-xs-6 text-right">
+                            <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                        [maxSize]="maxSize"
+                                        [itemsPerPage]="channelService.search.page_size"
+                                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                        (pageChanged)="pageChanged($event)"
+                                        class="pagination-sm"
+                                        [boundaryLinks]="true"></pagination>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 col-xs-6 text-right">
-                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
-                                [maxSize]="maxSize"
-                                [itemsPerPage]="channelService.search.page_size"
-                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                                (pageChanged)="pageChanged($event)"
-                                class="pagination-sm"
-                                [boundaryLinks]="true"></pagination>
-                </div>
-            </div>
         </div>
     </div>
 </div>
