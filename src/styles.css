@@ -131,7 +131,38 @@ b, strong {
     color: #333 !important;
     font-size: 12px !important;
     line-height: 30px !important;
+    padding-right: 10px;
 }
+
+.pagination-laz ul {
+    list-style: none;
+}
+
+.pagination-laz ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.btn-page-laz button {
+    background-image: linear-gradient(#eee 20%,#fff 80%);
+    border-radius: 0;
+}
+
+.btn-page-laz .btn-default:hover {
+    color: #333;
+    background-color: transparent !important;
+    border-color: #ccc !important;
+    box-shadow: none !important;
+}
+
+.btn-page-laz .dropdown-menu {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {margin-right: 26px;}
 
 .tooltip-inner {
     max-width: none;

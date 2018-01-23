@@ -10,3 +10,15 @@
 .btn-default {
     font-size: 13px;
 }
+
+.nav-tabs {
+    background: #ccd5db;
+}
+
+.nav-tabs > li > a {
+    border-radius: 0;
+    padding: 15px 12px;
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+}
