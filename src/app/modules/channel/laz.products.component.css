@@ -22,3 +22,7 @@
     background: #1b6aaa;
     transition: all 0.4s;
 }
+
+table {
+    margin-bottom: 10px;
+}

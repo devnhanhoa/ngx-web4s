@@ -30,13 +30,13 @@
             </div>
             <div class="laz-content">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 laz-btn">
                         <button type="button" (click)="orderDownload()" class="btn btn-primary btn-md"
                                 tooltip="Click để đồng bộ dữ liệu đơn hàng từ Lazada về hệ thống." placement="top">
                             <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
                         </button>
                     </div>
-                    <div class="col-md-6 col-xs-6 text-right pagination-laz" *ngIf="orders?.length > 0">
+                    <div class="col-md-6 col-xs-6 text-right pagination-laz top-laz" *ngIf="orders?.length > 0">
                         <ul>
                             <li>
                                 <a class="text-info">
@@ -144,14 +144,25 @@
                                 appBootstrapSelect
                                 class="selectpicker" [arroption]="arrPageSize"></select>
                     </div>
-                    <div class="col-md-6 col-xs-6 text-right">
-                        <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
-                                    [maxSize]="maxSize"
-                                    [itemsPerPage]="channelService.search.page_size"
-                                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-                                    (pageChanged)="pageChanged($event)"
-                                    class="pagination-sm"
-                                    [boundaryLinks]="true"></pagination>
+                    <div class="col-md-6 col-xs-6 text-right bottom-laz">
+                        <ul>
+                            <li>
+                                <a class="text-info">
+                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                                    paging.count:paging.page*paging.limit) +' / ' + paging.count}}
+                                </a>
+                            </li>
+                            <li>
+                                <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                            [maxSize]="maxSize"
+                                            [itemsPerPage]="channelService.search.page_size"
+                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                            (pageChanged)="pageChanged($event)"
+                                            class="pagination-sm"
+                                            [boundaryLinks]="true"></pagination>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
             </div>

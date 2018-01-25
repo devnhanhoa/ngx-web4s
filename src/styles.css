@@ -135,13 +135,27 @@ b, strong {
     padding-right: 10px;
 }
 
+
 .pagination-laz ul {
     list-style: none;
+    margin-bottom: 0;
 }
 
 .pagination-laz ul li {
     display: inline-block;
     vertical-align: top;
+}
+
+.laz-btn {
+    margin-bottom: 20px;
+}
+
+.bottom-laz ul {
+    margin-bottom: 5px !important;
+}
+
+.pagination {
+    padding-bottom: 0 !important;
 }
 
 .btn-page-laz button {
@@ -321,7 +335,16 @@ b, strong {
     text-align: center;
 }
 
-/* Reponsive*/
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 991px) {
+    .bottom-laz .text-info {
+        visibility: hidden;
+    }
+}
 
+/* Reponsive*/
+@media only screen and (max-width: 991px) {
+    .top-laz {
+        display: none;
+    }
+    .btn-page-laz {visibility: hidden;}
 }
