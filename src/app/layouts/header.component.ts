@@ -12,12 +12,10 @@ export class HeaderComponent {
 
     private subs: any;
     public profile = {full_name: '', url_img: ''};
-    public syssetting = {title: ''};
     public rootUrl = rootUrl;
 
     constructor(public appService: AppService) {
         this.getProfile();
-        this.getSysSetting();
     }
 
     private getProfile() {
@@ -27,15 +25,14 @@ export class HeaderComponent {
             }
         );
     }
-    private getSysSetting() {
-        this.subs = this.appService.getSysSetting().subscribe(
-            data => {
-                this.syssetting = data.data;
-            }
-        );
-    }
 
     errorHandler(event) {
         event.target.src = this.rootUrl + '/admin/img/avatar-default.png';
+    }
+
+    public openChatboxes() {
+        const url = this.appService.http.syssetting.caresoft_redirect_url;
+        const win = window.open(url, '_blank');
+        win.focus();
     }
 }
