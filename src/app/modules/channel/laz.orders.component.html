@@ -36,7 +36,7 @@
                             <i class="fa fa-download" aria-hidden="true"></i> Lấy đơn hàng từ lazada
                         </button>
                     </div>
-                    <div class="col-md-6 col-xs-6 text-right pagination-laz">
+                    <div class="col-md-6 col-xs-6 text-right pagination-laz" *ngIf="orders?.length > 0">
                         <ul>
                             <li>
                                 <a class="text-info">
@@ -137,7 +137,7 @@
                     </ng-container>
                     </tbody>
                 </table>
-                <div class="row">
+                <div class="row" *ngIf="orders?.length > 0">
                     <div class="col-md-6 col-xs-6 btn-page-laz">
                         <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
                                 (change)="pageSizeChange()"
