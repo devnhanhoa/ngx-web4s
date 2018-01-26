@@ -33,6 +33,7 @@ export class LazOrdersComponent implements OnInit {
         backdrop: true,
         ignoreBackdropClick: false
     };
+    public hover = {id: ''};
 
     constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
@@ -88,12 +89,18 @@ export class LazOrdersComponent implements OnInit {
     }
 
     public pageChanged(event: any): void {
-        this.channelService.search.page = event.page;
-        this.getLazOrders();
+        if (this.channelService.search.page !== event.page) {
+            this.channelService.search.page = event.page;
+            this.getLazOrders();
+        }
     }
 
     public pageSizeChange() {
         this.getLazOrders();
+    }
+
+    public rowHover(row) {
+        this.hover = row;
     }
 
     public goDetail = order => {

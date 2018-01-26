@@ -40,7 +40,8 @@
                         <ul>
                             <li>
                                 <a class="text-info">
-                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit >
+                                    paging.count)?
                                     paging.count:paging.page*paging.limit) +' / ' + paging.count}}
                                 </a>
                             </li>
@@ -48,17 +49,18 @@
                                 <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                             [maxSize]="maxSize"
                                             [itemsPerPage]="channelService.search.page_size"
-                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                                            lastText="&raquo;"
                                             (pageChanged)="pageChanged($event)"
                                             class="pagination-sm"
                                             [boundaryLinks]="true"></pagination>
                             </li>
                         </ul>
                         <!--<div>-->
-                            <!--<a class="text-info">-->
-                                <!--{{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?-->
-                                <!--paging.count:paging.page*paging.limit) +' / ' + paging.count}}-->
-                            <!--</a>-->
+                        <!--<a class="text-info">-->
+                        <!--{{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?-->
+                        <!--paging.count:paging.page*paging.limit) +' / ' + paging.count}}-->
+                        <!--</a>-->
                         <!--</div>-->
 
 
@@ -77,10 +79,11 @@
                         <th class="text-center" style="max-width: 60px;">#</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody (mouseleave)="rowHover({id:''})">
                     <ng-container *ngFor="let order of orders">
                         <ng-container *ngFor="let row of order.order_detail; let i = index">
-                            <tr *ngIf="i===0; else next">
+                            <tr *ngIf="i===0; else next" (mouseenter)="rowHover(order.Order)"
+                                [className]="hover.id===order.Order.id?'rowhover':''">
                                 <td [attr.rowspan]="order.order_detail.length">
                                     <p><strong><i class="fa fa-qrcode" aria-hidden="true"></i> Mã: </strong>{{order.Order.code}}
                                     </p>
@@ -117,7 +120,8 @@
                                         class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             </tr>
                             <ng-template #next>
-                                <tr>
+                                <tr (mouseenter)="rowHover(order.Order)"
+                                    [className]="hover.id===order.Order.id?'rowhover':''">
                                     <td>
                                         <p><strong><i class="fa fa-picture-o" aria-hidden="true"></i> </strong>{{row.ProductContent.name}}
                                         </p>
@@ -147,7 +151,8 @@
                         <ul>
                             <li>
                                 <a class="text-info">
-                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit > paging.count)?
+                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit >
+                                    paging.count)?
                                     paging.count:paging.page*paging.limit) +' / ' + paging.count}}
                                 </a>
                             </li>
@@ -155,7 +160,8 @@
                                 <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                             [maxSize]="maxSize"
                                             [itemsPerPage]="channelService.search.page_size"
-                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                                            lastText="&raquo;"
                                             (pageChanged)="pageChanged($event)"
                                             class="pagination-sm"
                                             [boundaryLinks]="true"></pagination>

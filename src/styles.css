@@ -135,7 +135,6 @@ b, strong {
     padding-right: 10px;
 }
 
-
 .pagination-laz ul {
     list-style: none;
     margin-bottom: 0;
@@ -159,7 +158,7 @@ b, strong {
 }
 
 .btn-page-laz button {
-    background-image: linear-gradient(#eee 20%,#fff 80%);
+    background-image: linear-gradient(#eee 20%, #fff 80%);
     border-radius: 0;
 }
 
@@ -176,8 +175,9 @@ b, strong {
     border-radius: 0;
 }
 
-
-.bootstrap-select.btn-group .dropdown-toggle .filter-option {margin-right: 26px;}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    margin-right: 26px;
+}
 
 .tooltip-inner {
     max-width: none;
@@ -232,7 +232,7 @@ b, strong {
     border-bottom-width: 0;
 }
 
-.table-hover > tbody > tr:hover {
+.table-hover > tbody > tr:hover, .table-hover > tbody > tr.rowhover {
     background-color: #ffc;
 }
 
@@ -339,7 +339,10 @@ b, strong {
     .bottom-laz .text-info {
         visibility: hidden;
     }
-    .btn-toggle-mb {display:none;}
+
+    .btn-toggle-mb {
+        display: none;
+    }
 }
 
 /* Reponsive*/
@@ -347,14 +350,18 @@ b, strong {
     .top-laz {
         display: none;
     }
-    .btn-page-laz {visibility: hidden;}
+
+    .btn-page-laz {
+        visibility: hidden;
+    }
+
     .btn-toggle-mb {
         display: block;
         visibility: visible;
         z-index: 1000;
         position: absolute;
-        left:25px;
-        top:-37.5px;
+        left: 25px;
+        top: -37.5px;
         z-index: 1080;
     }
 
@@ -363,9 +370,13 @@ b, strong {
     }
 
     .min-main-content {
-        margin-left:0;
+        margin-left: 0;
     }
-    .logo-home {visibility: hidden;}
+
+    .logo-home {
+        visibility: hidden;
+    }
+
     .navbar {
         width: 100vw !important;
         margin-left: -190px;
@@ -373,18 +384,22 @@ b, strong {
         z-index: 105;
         position: fixed !important;
     }
+
     .sidebar {
         position: absolute;
         margin-top: 51px;
         padding-top: 0 !important;
     }
+
     .title-syssetting {
         /*margin-left: 38px;*/
         margin-left: 55px;
     }
+
     .main-content {
         margin-left: 0;
     }
+
     .channel-content {
         padding-top: 50px;
     }

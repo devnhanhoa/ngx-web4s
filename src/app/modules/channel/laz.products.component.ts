@@ -36,6 +36,7 @@ export class LazProductsComponent implements OnInit {
         {label: 'Sản phẩm Lazada', lazurl: ''}
     ];
     public rootUrl = rootUrl;
+    public hover = {id: ''};
 
     constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
@@ -102,16 +103,21 @@ export class LazProductsComponent implements OnInit {
     }
 
     public pageChanged(event: any): void {
-        this.channelService.search.page = event.page;
-        this.getLazProduct();
+        if (this.channelService.search.page !== event.page) {
+            this.channelService.search.page = event.page;
+            this.getLazProduct();
+        }
     }
 
     public pageSizeChange() {
         this.getLazProduct();
     }
 
+    public rowHover(row) {
+        this.hover = row;
+    }
+
     public goDetail = product => {
-        // this.channelService.http.loading.show = true;
         this.router.navigate([`/channel/laz-products/${product.id}`]);
     }
 }
