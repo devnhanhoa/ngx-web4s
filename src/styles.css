@@ -348,7 +348,15 @@ b, strong {
         display: none;
     }
     .btn-page-laz {visibility: hidden;}
-    .btn-toggle-mb {display: block;visibility: visible;z-index: 1000; position: absolute;left:24px;top:-37px;z-index: 1080;}
+    .btn-toggle-mb {
+        display: block;
+        visibility: visible;
+        z-index: 1000;
+        position: absolute;
+        left:25px;
+        top:-37.5px;
+        z-index: 1080;
+    }
 
     .menu-min {
         visibility: hidden;
