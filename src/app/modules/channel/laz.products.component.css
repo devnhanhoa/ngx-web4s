@@ -26,3 +26,7 @@
 table {
     margin-bottom: 10px;
 }
+
+table .thumb_image {
+    border: 1px solid #ddd;
+}
