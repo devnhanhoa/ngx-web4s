@@ -63,7 +63,7 @@
 
                     </div>
                 </div>
-
+                <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -121,14 +121,15 @@
                     </ng-container>
                     </tbody>
                 </table>
+                </div>
                 <div *ngIf="paging.count>0" class="row">
-                    <div class="col-md-6 col-xs-6 btn-page-laz">
+                    <div class="col-md-6 col-xs-12 btn-page-laz">
                         <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
                                 (change)="pageSizeChange()"
                                 appBootstrapSelect
                                 class="selectpicker" [arroption]="arrPageSize"></select>
                     </div>
-                    <div class="col-md-6 col-xs-6 text-right pagination-laz bottom-laz">
+                    <div class="col-md-6 col-xs-12 text-right pagination-laz bottom-laz">
                         <ul>
                             <li>
                                 <a class="text-info">

@@ -58,7 +58,7 @@
                         </ul>
                     </div>
                 </div>
-
+                <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -132,6 +132,7 @@
                     </ng-container>
                     </tbody>
                 </table>
+                </div>
                 <div class="row" *ngIf="paging.count>0">
                     <div class="col-md-6 col-xs-6 btn-page-laz">
                         <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
