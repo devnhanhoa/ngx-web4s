@@ -84,10 +84,11 @@
                             <tr *ngIf="i===0; else next" (mouseenter)="rowHover(product)"
                                 [className]="hover.id===product.id?'rowhover':''">
                                 <td [attr.rowspan]="product.ProductItem.length">
-                                    <a href="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" target="_blank"
-                                       *ngIf="product.ProductItem[0].media && product.ProductItem[0].media.path_original">
+                                    <a href="{{rootUrl}}/{{product.ProductItem[0].media[0].path_original}}"
+                                       target="_blank"
+                                       *ngIf="product.ProductItem[0].media[0] && product.ProductItem[0].media[0].path_original">
                                         <img class="thumb_image"
-                                             src="{{rootUrl}}/{{product.ProductItem[0].media.path_original}}" alt="">
+                                             src="{{rootUrl}}/{{product.ProductItem[0].media[0].path_original}}" alt="">
                                     </a>
                                     {{product.id}}-{{product.name}}
                                 </td>
