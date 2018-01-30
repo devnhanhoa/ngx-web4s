@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {AppService} from '../service/app.service';
 import {NotifyService} from '../service/notify.service';
 import {rootUri} from '../app.config';
+import {rootUrl} from '../app.config';
 
 @Component({
     selector: 'app-layouts-sidebar',
@@ -18,7 +19,7 @@ export class SidebarComponent implements OnInit {
     private uri: string;
     public notify = [];
     private unover = true;
-
+    public rootUrl = rootUrl;
     constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
         this.getSidebar();

@@ -5,10 +5,11 @@
     </div>
     <div class="logo-home">
         <div class="left-logo">
-            <a href="http://dev.webaz.com.vn:82/admin" class="">
+            <a href="{{rootUrl}}" class="">
                 <img class="align-text-bottom" style="height: 26px"
-                     src="http://dev.webaz.com.vn:82/admin/img/logo-home.png">
-                <span class="text-logo cl-w pl-5 fs-16"><strong style="font-size: 18px">Admin</strong>Webaz</span>
+                     src="{{rootUrl}}/admin/img/logo-home.png">
+                <span class="text-logo cl-w pl-5 fs-18">
+                    <strong>Admin</strong>Web4s</span>
             </a>
         </div>
     </div>
@@ -22,7 +23,7 @@
                 <a href="javascript: void(0)" class="dropdown-toggle">
                     <i class="{{menu.Module.class_i}}"></i>
                     <span class="menu-text"> {{menu.Module.alias}} </span>
-                    <b class="arrow fa fa-angle-down"></b>
+                    <b class="arrow ion-ios-arrow-down"></b>
                     <span class="badge badge-important"></span>
                 </a>
                 <app-layouts-sidebar-submenu [menu]="menu.Module.child"
