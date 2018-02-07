@@ -14,6 +14,11 @@ const appRoutes: Routes = [
         canActivate: [AppGuard]
     },
     {
+        path: 'history',
+        loadChildren: './modules/history/history.module#HistoryModule',
+        canActivate: [AppGuard]
+    },
+    {
         path: '**',
         loadChildren: './modules/channel/channel.module#ChannelModule',
         pathMatch: 'full',
