@@ -1,0 +1,208 @@
+<div class="container-fluid history-content">
+    <div class="row">
+        <div class="col-md-12">
+            <app-public-breadcrumb [Breadcrumbs]="historybillArray"></app-public-breadcrumb>
+            <div class="panel panel-default page-header">
+                <div class="panel-body">
+                    <form>
+                        <div class="row history-form">
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
+                                <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="Tìm kiếm" autocomplete="false" data-rel="tooltip" title="" data-original-title="Tên / Mã / Mã vạch sản phẩm">
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
+                                <select name="shop_id" class="form-control chosen-select" id="shop_id">
+                                    <option value="">-- Cửa hàng --</option>
+                                    <option *ngFor="let shop of shops" value="{{shop.SystemShop.id}}">{{shop.SystemShop.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
+                                <select name="shop_id" class="form-control chosen-select" id="type" *ngIf="types">
+                                    <option value="">--Loại --</option>
+                                    <option value="{{types.N.code}}">{{types.N.name}}</option>
+                                    <option value="{{types.X.code}}">{{types.X.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
+                                <select name="shop_id" class="form-control chosen-select" id="type_receipt" *ngIf="receipts">
+                                    <option value="">--Chọn kiểu --</option>
+                                    <option value="{{receipts.NCC.code}}">{{receipts.NCC.name}}</option>
+                                    <option value="{{receipts.CHUYEN_KHO.code}}">{{receipts.CHUYEN_KHO.name}}</option>
+                                    <option value="{{receipts.GIAO_HANG.code}}">{{receipts.GIAO_HANG.name}}</option>
+                                    <option value="{{receipts.BAN_LE.code}}">{{receipts.BAN_LE.name}}</option>
+                                    <option value="{{receipts.BAN_BUON.code}}">{{receipts.BAN_BUON.name}}</option>
+                                    <option value="{{receipts.HANG_TANG_KEM.code}}">{{receipts.HANG_TANG_KEM.name}}</option>
+                                    <option value="{{receipts.BU_TRU_KK.code}}">{{receipts.BU_TRU_KK.name}}</option>
+                                    <option value="{{receipts.KHAC.code}}">{{receipts.KHAC.name}}</option>
+                                    <option value="{{receipts.KHACH_TRA.code}}">{{receipts.KHACH_TRA.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive sm-hidden">
+                                <ul>
+                                    <li>
+                                        <button type="submit" id="btn-search" class="btn btn-primary btn-xs"> Tìm kiếm </button>
+                                    </li>
+                                    <li>
+                                        <a id="btn-refresh-filter" class="btn btn-success btn-xs margin-l-5"> <i class="fa fa-refresh bigger-120" aria-hidden="true"></i> </a>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn-collapse" data-toggle="collapse" data-target="#demo"><i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div id="demo" class="collapse form-expand">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Kho đến </label>
+                                        <select name="to_shop_id" class="form-control chosen-select" id="to_shop_id">
+                                            <option value="">-- Kho đến --</option>
+                                            <option *ngFor="let shop of shops" value="{{shop.SystemShop.id}}">{{shop.SystemShop.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Nhà cung cấp </label>
+                                        <input name="partner_name" id="partner_name" value="" class="form-control" type="text" placeholder="Nhà cung cấp" autocomplete="false">
+                                        <input name="partner_id" id="partner_id" value="" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Người tạo </label>
+                                        <input name="name_create_by" id="name_create_by" value="" class="form-control" type="text" placeholder="Tên người tạo" autocomplete="false">
+                                        <input name="created_by" id="created_by" value="" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Nhân viên </label>
+                                        <input name="staff_full_name" id="staff_full_name" value="" class="form-control" type="text" placeholder="Nhân viên" autocomplete="false">
+                                        <input name="staff_id" id="staff_id" value="" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Người gửi </label>
+                                        <input name="from_person" id="from_person" value="" class="form-control" type="text" placeholder="Người gửi" autocomplete="false">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Người nhận </label>
+                                        <input name="to_person" id="to_person" value="" class="form-control" type="text" placeholder="Người nhận" autocomplete="false">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Ghi chú </label>
+                                        <input name="note" id="note" value="" class="form-control" type="text" placeholder="Ghi chú" autocomplete="false">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="form-group col">
+                                        <label class="control-label"> Ngày tạo </label>
+                                        <div class="clearfix">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding-left">
+                                                <input name="from_date" id="from_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Từ" autocomplete="false">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                                                <input name="to_date" id="to_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Đến" autocomplete="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="history-bill-content">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <ul class="nav nav-pills action-prd">
+                            <li role="presentation" class="">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ace-icon fa fa-cogs"></i> Hành động <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="export" format="excel"> <i class="fa fa-file-excel-o"></i> Xuất excel trang hiện tại </a>
+                                    </li>
+                                    <li>
+                                        <a class="export" format="excel_all"> <i class="fa fa-file-excel-o"></i> Xuất excel toàn bộ các trang </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Cửa hàng</th>
+                            <th class="text-center">Kiểu</th>
+                            <th class="text-center"><i class="fa fa-user" aria-hidden="true"></i> Khách hàng</th>
+                            <th class="text-center"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Ngày tạo</th>
+                            <th class="text-center"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Ngày xóa</th>
+                            <th class="text-center"><i class="fa fa-user-times" aria-hidden="true"></i></th>
+                            <th class="text-center"><i class="fa fa-file-o" aria-hidden="true"></i> Lý do xóa phiếu</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let bill of delbills">
+                                <ng-container>
+                                    <tr>
+                                        <td>{{bill.ProductStoreBill.id}}</td>
+                                        <td>{{bill.Shop.name}}</td>
+                                        <td>{{bill.ProductStoreBill.type}} - {{bill.ProductStoreBill.type_receipt}}</td>
+                                        <td></td>
+                                        <td>{{bill.ProductStoreBill.created | date:'HH:mm dd-MM-yyyy'}}</td>
+                                        <td>{{bill.ProductStoreBill.updated | date:'HH:mm dd-MM-yyyy'}}</td>
+                                        <td>{{bill.User.full_name}}</td>
+                                        <td>{{bill.ProductStoreBill.del_notes}}</td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="paging.count>0" class="row">
+                    <div class="col-md-6 col-xs-12 btn-page-laz">
+                        <select [(ngModel)]="historyService.search.page_size" name="page_size" title="Page size"
+                                (change)="pageSizeChange()"
+                                appBootstrapSelect
+                                class="selectpicker" [arroption]="arrPageSize"></select>
+                    </div>
+                    <div class="col-md-6 col-xs-12 text-right pagination-laz bottom-laz">
+                        <ul>
+                            <li>
+                                <a class="text-info">
+                                    {{((paging.page-1)*paging.limit)+ ' - ' + ((paging.page*paging.limit >
+                                    paging.count)?
+                                    paging.count:paging.page*paging.limit) +' / ' + paging.count}}
+                                </a>
+                            </li>
+                            <li>
+                                <pagination [totalItems]="paging.count" [(ngModel)]="historyService.search.page"
+                                            [maxSize]="maxSize"
+                                            [itemsPerPage]="historyService.search.page_size"
+                                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                                            lastText="&raquo;"
+                                            (pageChanged)="pageChanged($event)"
+                                            class="pagination-sm"
+                                            [boundaryLinks]="true"></pagination>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

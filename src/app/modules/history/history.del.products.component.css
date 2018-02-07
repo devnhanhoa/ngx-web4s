@@ -1,0 +1,85 @@
+.panel {
+    background: #ccd5db;
+}
+.panel-body {
+    padding: 12px 12px 5px 12px;
+}
+.history-list-content {
+    background: #fff;
+    padding: 12px;
+}
+.history-form {
+    padding-left: 13px;
+}
+.input-responsive {
+    padding: 0 12px 0 0;
+}
+.input-responsive input, .input-responsive select {
+    border: 1px solid #d5d5d5;
+    padding: 4px 4px 5px;
+    height: 32px;
+    font-size: 13px;
+}
+.input-responsive ul {
+    list-style: none;
+    padding-left: 0;
+}
+.input-responsive ul li {
+    display: inline-block;
+    padding-right: 7px;
+}
+.btn-primary, .btn-primary:focus {
+    background-color: #2ea1f8 !important;
+    background: linear-gradient(180deg,#2ea1f8,#1990ea) !important;
+    border: 1px solid #1a91eb;
+    padding: 5px 10px;
+    transition: background-color .15s, border-color .15s, opacity .15s;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+    border-radius: 0;
+    height: 31px;
+}
+.btn-primary:active, .btn-primary:hover {
+    background-color: #1a98f7 !important;
+    background: linear-gradient(180deg,#1a98f7,#1485db) !important;
+}
+.btn-success {
+    width: 31px;
+    height: 31px;
+    border-radius: 0;
+    line-height: 27px;
+    vertical-align: middle;
+    position: relative;
+}
+.btn-success i {
+    font-size: 14px;
+}
+.btn-collapse {
+    width: 31px;
+    height: 31px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0;
+    color: #fff;
+    background: #abbac3!important;
+    box-shadow: none;
+    border: 1px solid transparent;
+    transition: background-color .15s, border-color .15s, opacity .15s;
+    cursor: pointer;
+}
+.btn-collapse:hover {
+    background-color: #8b9aa3!important;
+    border-color: #abbac3;
+}
+.form-expand {
+    background: #f3f7f9;
+    padding: 12px 12px 5px 12px;
+}
+
+.form-expand input,
+.form-expand select {
+    font-size: 13px;
+}
