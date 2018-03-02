@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HistoryService} from '../../service/history.service';
 import {Subscription} from 'rxjs/Subscription';
 import {arrPageSize} from '../../lib/const';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
+import 'rxjs/add/observable/of';
 
 @Component({
     selector: 'app-history',
@@ -11,6 +14,8 @@ import {arrPageSize} from '../../lib/const';
 })
 
 export class HistoryDelBillsComponent implements OnInit {
+    @ViewChild('form') form: any;
+    selected: string;
     public historybillArray: any[] = [
         {label: 'Phiếu xóa', hisurl: ''},
         {label: 'Phiếu xuất nhập kho đã xóa', hisurl: ''}
@@ -19,15 +24,23 @@ export class HistoryDelBillsComponent implements OnInit {
     public shops = [];
     public types: any;
     public receipts: any;
+    public suppliers: any[] = [];
+    public users: any[] = [];
     public delbills: Array<any> = [];
     public maxSize = 5;
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
-    constructor(public historyService: HistoryService) {
+    minDate = new Date(2017, 5, 10);
+    maxDate = new Date(2018, 9, 15);
+
+    bsValue: Date = new Date();
+    bsRangeValue: any = [new Date(2017, 7, 4), new Date(2017, 7, 20)];
+    constructor(public historyService: HistoryService, private router: Router) {
         this.getShop();
         this.getType();
         this.getTypeReceipt();
-        this.getDelBill();
+        this.getSupplier();
+        this.getUser();
     }
     private getShop() {
         this.subs = this.historyService.getShop().subscribe(
@@ -50,11 +63,29 @@ export class HistoryDelBillsComponent implements OnInit {
             }
         );
     }
-    private getDelBill() {
-        this.subs = this.historyService.getDelBill().subscribe(
+    public getDelBill() {
+        this.historyService.http.startLoad();
+        this.subs = this.historyService.getDelBill(this.historyService.search).subscribe(
             data => {
                 this.delbills = data.data.result;
                 this.paging = data.data.paging;
+                this.historyService.http.endLoad();
+            }, error => {
+                this.historyService.http.endLoad();
+            }
+        );
+    }
+    private getSupplier() {
+        this.subs = this.historyService.getSupplier().subscribe(
+          data => {
+              this.suppliers = data.data;
+          }
+        );
+    }
+    private getUser() {
+        this.subs = this.historyService.getUser().subscribe(
+            data => {
+                this.users = data.data;
             }
         );
     }
@@ -68,5 +99,14 @@ export class HistoryDelBillsComponent implements OnInit {
         this.getDelBill();
     }
     ngOnInit() {
+        this.getDelBill();
+    }
+    public search() {
+        this.historyService.search.page = 1;
+        this.getDelBill();
+    }
+    public resetForm() {
+        this.form.reset();
+        this.search();
     }
 }

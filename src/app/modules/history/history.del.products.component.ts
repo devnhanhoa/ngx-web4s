@@ -43,5 +43,6 @@ export class HistoryDelProductsComponent implements OnInit {
         );
     }
     ngOnInit() {
+        this.getShop();
     }
 }

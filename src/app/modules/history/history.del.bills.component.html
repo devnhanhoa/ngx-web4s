@@ -4,26 +4,31 @@
             <app-public-breadcrumb [Breadcrumbs]="historybillArray"></app-public-breadcrumb>
             <div class="panel panel-default page-header">
                 <div class="panel-body">
-                    <form>
+                    <form novalidate (ngSubmit)="search()" #form="ngForm">
                         <div class="row history-form">
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="Tìm kiếm" autocomplete="false" data-rel="tooltip" title="" data-original-title="Tên / Mã / Mã vạch sản phẩm">
+                                <input title=""
+                                       [(ngModel)]="historyService.search.title"
+                                       placeholder="Tìm kiếm"
+                                       name="title"
+                                       tooltip="Tìm theo Tên / Mã / Mã vạch sản phẩm" placement="top"
+                                       class="form-control">
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <select name="shop_id" class="form-control chosen-select" id="shop_id">
+                                <select name="shop_id" class="form-control chosen-select" id="shop_id" shop="" [ngModel]="historyService.search.shop" name="shop">
                                     <option value="">-- Cửa hàng --</option>
-                                    <option *ngFor="let shop of shops" value="{{shop.SystemShop.id}}">{{shop.SystemShop.name}}</option>
+                                    <option  *ngFor="let shop of shops" value="{{shop.SystemShop.id}}">{{shop.SystemShop.name}}</option>
                                 </select>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <select name="shop_id" class="form-control chosen-select" id="type" *ngIf="types">
+                                <select name="type_id" class="form-control chosen-select" id="type" *ngIf="types">
                                     <option value="">--Loại --</option>
                                     <option value="{{types.N.code}}">{{types.N.name}}</option>
                                     <option value="{{types.X.code}}">{{types.X.name}}</option>
                                 </select>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <select name="shop_id" class="form-control chosen-select" id="type_receipt" *ngIf="receipts">
+                                <select name="type_receipt_id" class="form-control chosen-select" id="type_receipt" *ngIf="receipts">
                                     <option value="">--Chọn kiểu --</option>
                                     <option value="{{receipts.NCC.code}}">{{receipts.NCC.name}}</option>
                                     <option value="{{receipts.CHUYEN_KHO.code}}">{{receipts.CHUYEN_KHO.name}}</option>
@@ -39,10 +44,10 @@
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive sm-hidden">
                                 <ul>
                                     <li>
-                                        <button type="submit" id="btn-search" class="btn btn-primary btn-xs"> Tìm kiếm </button>
+                                        <button type="submit" id="btn-search" class="btn btn-primary btn-xs" (click)="search()"> Tìm kiếm </button>
                                     </li>
                                     <li>
-                                        <a id="btn-refresh-filter" class="btn btn-success btn-xs margin-l-5"> <i class="fa fa-refresh bigger-120" aria-hidden="true"></i> </a>
+                                        <a id="btn-refresh-filter" class="btn btn-success btn-xs margin-l-5" (click)="resetForm()"> <i class="fa fa-refresh bigger-120" aria-hidden="true"></i> </a>
                                     </li>
                                     <li>
                                         <button type="button" class="btn-collapse" data-toggle="collapse" data-target="#demo"><i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
@@ -65,51 +70,69 @@
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Nhà cung cấp </label>
-                                        <input name="partner_name" id="partner_name" value="" class="form-control" type="text" placeholder="Nhà cung cấp" autocomplete="false">
-                                        <input name="partner_id" id="partner_id" value="" type="hidden">
+                                        <input [ngModel]="selected"
+                                                [typeahead]="suppliers"
+                                                typeaheadOptionField="label"
+                                                class="form-control" name="supplier">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Người tạo </label>
-                                        <input name="name_create_by" id="name_create_by" value="" class="form-control" type="text" placeholder="Tên người tạo" autocomplete="false">
-                                        <input name="created_by" id="created_by" value="" type="hidden">
+                                        <input [ngModel]="selected"
+                                               [typeahead]="users"
+                                               typeaheadOptionField="label"
+                                               class="form-control" name="user">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Nhân viên </label>
-                                        <input name="staff_full_name" id="staff_full_name" value="" class="form-control" type="text" placeholder="Nhân viên" autocomplete="false">
-                                        <input name="staff_id" id="staff_id" value="" type="hidden">
+                                        <input [ngModel]="selected"
+                                               [typeahead]="users"
+                                               typeaheadOptionField="label"
+                                               class="form-control" name="user">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Người gửi </label>
-                                        <input name="from_person" id="from_person" value="" class="form-control" type="text" placeholder="Người gửi" autocomplete="false">
+                                        <input  name="from_person" class="form-control" type="text" placeholder="Người gửi" >
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Người nhận </label>
-                                        <input name="to_person" id="to_person" value="" class="form-control" type="text" placeholder="Người nhận" autocomplete="false">
+                                        <input name="to_person"  value="" class="form-control" type="text" placeholder="Người nhận">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Ghi chú </label>
-                                        <input name="note" id="note" value="" class="form-control" type="text" placeholder="Ghi chú" autocomplete="false">
+                                        <input name="note" id="note" value="" class="form-control" type="text" placeholder="Ghi chú">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <div class="form-group col">
                                         <label class="control-label"> Ngày tạo </label>
                                         <div class="clearfix">
-                                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding-left">
-                                                <input name="from_date" id="from_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Từ" autocomplete="false">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding-left ui-datepicker">
+                                                <!--<input name="from_date" id="from_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Từ" autocomplete="false">-->
+                                                <input class="form-control" type="text"
+                                                       class="form-control"
+                                                       [minDate]="minDate"
+                                                       [maxDate]="maxDate"
+                                                       #dp="bsDatepicker"
+                                                       bsDatepicker [(bsValue)]="bsValue">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
-                                                <input name="to_date" id="to_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Đến" autocomplete="false">
+                                                <!--<input name="to_date" id="to_date" value="" type="text" class="form-control datetime-input hasDatepicker" placeholder="Đến" autocomplete="false">-->
+                                                <input class="form-control" type="text"
+                                                       class="form-control"
+                                                       [minDate]="minDate"
+                                                       [maxDate]="maxDate"
+                                                       #dp="bsDatepicker"
+                                                       bsDatepicker [(bsValue)]="bsValue">
                                             </div>
                                         </div>
                                     </div>

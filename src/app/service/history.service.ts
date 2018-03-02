@@ -7,7 +7,7 @@ import {apiUrl} from '../app.config';
 export class HistoryService {
     static instance: HistoryService;
     private module = 'history';
-    public search = {title: '', page_size: 20, page: 1};
+    public search = {title: '', shop: '', page_size: 20, page: 1};
 
     constructor(public http: HttpX) {
         return HistoryService.instance = HistoryService.instance || this;
@@ -31,8 +31,22 @@ export class HistoryService {
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
 
-    public getDelBill() {
+    public getDelBill(sparams) {
         const url = apiUrl + this.module +  '/del/bill';
+        const params: URLSearchParams = new URLSearchParams();
+        Object.keys(sparams).map((key) => {
+            params.set(key, sparams[key]);
+        });
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
+
+    public getSupplier() {
+        const url = apiUrl + '/partner/supplier';
+        const params: URLSearchParams = new URLSearchParams();
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
+    public getUser() {
+        const url = apiUrl + '/user/getall';
         const params: URLSearchParams = new URLSearchParams();
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
