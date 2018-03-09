@@ -7,15 +7,15 @@
                     <form novalidate (ngSubmit)="search()" #form="ngForm">
                         <div class="row history-form">
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <input title=""
-                                       [(ngModel)]="historyService.search.title"
+                                <input titledel=""
+                                       [(ngModel)]="historyService.search.titledel"
                                        placeholder="Tìm kiếm"
-                                       name="title"
+                                       name="titledel"
                                        tooltip="Tìm theo Tên / Mã / Mã vạch sản phẩm" placement="top"
                                        class="form-control">
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 mb-12 input-responsive">
-                                <select name="shop_id" class="form-control chosen-select" id="shop_id" shop="" [ngModel]="historyService.search.shop" name="shop">
+                                <select class="form-control chosen-select" id="shop_id"  name="shop">
                                     <option value="">-- Cửa hàng --</option>
                                     <option  *ngFor="let shop of shops" value="{{shop.SystemShop.id}}">{{shop.SystemShop.name}}</option>
                                 </select>

@@ -30,17 +30,20 @@ export class HistoryDelBillsComponent implements OnInit {
     public maxSize = 5;
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
-    minDate = new Date(2017, 5, 10);
-    maxDate = new Date(2018, 9, 15);
-
-    bsValue: Date = new Date();
-    bsRangeValue: any = [new Date(2017, 7, 4), new Date(2017, 7, 20)];
+    // minDate = new Date(2017, 5, 10);
+    // maxDate = new Date(2018, 9, 15);
+    //
+    // bsValue: Date = new Date();
+    // bsRangeValue: any = [new Date(2017, 7, 4), new Date(2017, 7, 20)];
     constructor(public historyService: HistoryService, private router: Router) {
         this.getShop();
         this.getType();
         this.getTypeReceipt();
         this.getSupplier();
         this.getUser();
+    }
+    ngOnInit() {
+        this.getDelBill();
     }
     private getShop() {
         this.subs = this.historyService.getShop().subscribe(
@@ -98,9 +101,7 @@ export class HistoryDelBillsComponent implements OnInit {
     public pageSizeChange() {
         this.getDelBill();
     }
-    ngOnInit() {
-        this.getDelBill();
-    }
+
     public search() {
         this.historyService.search.page = 1;
         this.getDelBill();

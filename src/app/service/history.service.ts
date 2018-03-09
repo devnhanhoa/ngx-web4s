@@ -7,7 +7,7 @@ import {apiUrl} from '../app.config';
 export class HistoryService {
     static instance: HistoryService;
     private module = 'history';
-    public search = {title: '', shop: '', page_size: 20, page: 1};
+    public search = {titledel: '', page_size: 20, page: 1};
 
     constructor(public http: HttpX) {
         return HistoryService.instance = HistoryService.instance || this;
