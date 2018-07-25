@@ -20,6 +20,8 @@ export class SidebarComponent implements OnInit {
     public notify = [];
     private unover = true;
     public rootUrl = rootUrl;
+    public arrow: boolean = false;
+
     constructor(public appService: AppService, private notifyService: NotifyService) {
         this.uri = rootUri + document.location.pathname;
         this.getSidebar();
@@ -73,6 +75,7 @@ export class SidebarComponent implements OnInit {
     }
 
     public selectItem(item) {
+        this.arrow = !this.arrow;
         this.select = item;
     }
 

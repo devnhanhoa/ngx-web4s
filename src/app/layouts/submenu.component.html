@@ -1,8 +1,10 @@
-<ul *ngIf="menu.length" [style.display]="show ? 'block' : 'none'"
-    [ngClass]="parent!=='0'? 'subsubmenu': ''"
-    class="submenu">
+<ul *ngIf="menu.length"
+    [style.display]="show ? 'block' : 'none'"
+    class="submenu"
+    [ngClass]="parent !== '0' ? 'subsubmenu' : ''">
     <ng-container *ngFor="let smenu of menu">
-        <li *ngIf="smenu.Module.child.length>0; else notchild" (mouseenter)="showChildren(smenu)"
+        <li *ngIf="smenu.Module.child.length > 0; else notchild"
+            (mouseenter)="showChildren(smenu)"
             (mouseleave)="hideChildren(smenu)"
             data-id="{{smenu.Module.id}}">
             <a *ngIf="(smenu.Module.module==='Admin')&&(smenu.Module.ctl==='ngstore'); else next"
@@ -13,7 +15,7 @@
             <b class="arrow fa glyphicon glyphicon-plus"></b>
             <app-layouts-sidebar-submenu [menu]="smenu.Module.child"
                                          [parent]="smenu.Module.id"
-                                         [show]="(showchil&&(select.Module.id===smenu.Module.id))"></app-layouts-sidebar-submenu>
+                                         [show]="(showchild&&(select.Module.id === smenu.Module.id))"></app-layouts-sidebar-submenu>
         </li>
 
         <ng-template #notchild>

@@ -14,20 +14,30 @@
         </div>
     </div>
     <div class="nav-wrap-up pos-rel">
-        <ul appNotify [notify]="notify" class="nav nav-list group-left list-unstyled components">
-            <li *ngFor="let menu of allMenu" class="sidebar-left"
+        <ul appNotify [notify]="notify" class="nav nav-list group-left list-unstyled components" id="accordion">
+            <li *ngFor="let menu of allMenu; let idx = index"
+                class="sidebar-left"
                 data-id="{{menu.Module.id}}"
-                (mouseenter)="onHovering(menu)"
-                (mouseleave)="onUnovering(menu)"
-                [ngClass]="(menu.Module.id === select.Module.id)? 'open': ''" (click)="selectItem(menu)">
-                <a href="javascript: void(0)" class="dropdown-toggle">
+                (mouseenter)="onHovering(menu.Module.child)"
+                (mouseleave)="onUnovering(menu.Module.child)"
+                [ngClass]="(menu.Module.id === select.Module.id) ? 'open': ''"
+                (click)="selectItem(menu);">
+                <a href="javascript: void(0)"
+                   class="dropdown-toggle"
+                   data-toggle="collapse"
+                   [attr.data-target]="'#' + 'collapse' + idx"
+                   aria-expanded="false"
+                   [attr.aria-controls]="'collapse' + idx">
                     <i class="{{menu.Module.class_i}}"></i>
                     <span class="menu-text"> {{menu.Module.alias}} </span>
-                    <b class="arrow ion-ios-arrow-down"></b>
+                    <b class="arrow" [ngClass]="{'ion-ios-arrow-down': !arrow || (menu.Module.id !== select.Module.id), 'ion-ios-arrow-right': arrow && (menu.Module.id === select.Module.id)}"></b>
                     <span class="badge badge-important"></span>
                 </a>
-                <app-layouts-sidebar-submenu [menu]="menu.Module.child"
-                                             [show]="(select.Module.id===menu.Module.id)"></app-layouts-sidebar-submenu>
+                <div  [attr.id]="'collapse' + idx" class="collapse"  data-parent="#accordion" [ngClass]="(menu.Module.id === select.Module.id) ? 'in': ''"
+                >
+                    <app-layouts-sidebar-submenu [menu]="menu.Module.child"
+                                                 [show]="(select.Module.id === menu.Module.id)"></app-layouts-sidebar-submenu>
+                </div>
             </li>
         </ul>
     </div>

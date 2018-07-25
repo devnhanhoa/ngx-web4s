@@ -333,7 +333,7 @@ b, strong {
     text-shadow: none;
     font-size: 14px;
     position: absolute;
-    right: 8px;
+    right: 5px;
     top: 12px;
     padding: 0;
     text-align: center;
@@ -341,6 +341,10 @@ b, strong {
 
 .channel-content img {
     max-width: 100%;
+}
+
+.pos-rel {
+    overflow: unset !important;
 }
 
 @media only screen and (min-width: 991px) {

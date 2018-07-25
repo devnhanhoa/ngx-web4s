@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {rootUri} from '../app.config';
+import {root} from 'rxjs/util/root';
 
 @Component({
     selector: 'app-layouts-sidebar-submenu',
@@ -7,7 +8,7 @@ import {rootUri} from '../app.config';
     styleUrls: ['./submenu.component.css']
 })
 
-export class SubmenuComponent {
+export class SubmenuComponent implements OnInit {
     public root = rootUri;
 
     @Input('menu')
@@ -19,16 +20,20 @@ export class SubmenuComponent {
     @Input('show')
     public show = false;
 
-    public showchil = false;
+    public showchild = false;
     public select = {Module: {id: ''}};
     private unover = true;
 
     constructor() {
     }
 
+    public ngOnInit() {
+
+    }
+
     public showChildren(smenu) {
         this.select = smenu;
-        this.showchil = true;
+        this.showchild = true;
         this.unover = false;
     }
 
@@ -38,7 +43,7 @@ export class SubmenuComponent {
         setTimeout(function () {
             if (myjs.unover && (myjs.select === smenu)) {
                 myjs.select = {Module: {id: ''}};
-                myjs.showchil = false;
+                myjs.showchild = false;
             }
         }, 1000);
     }
